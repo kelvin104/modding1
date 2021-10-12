@@ -1,5 +1,7 @@
 package com.fyp1155125212.fypmod;
 
+import com.fyp1155125212.fypmod.init.BlockInit;
+import com.fyp1155125212.fypmod.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +33,8 @@ public class fypMod
         // Register the setup method for modloading
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ItemInit.register(eventBus);
+        BlockInit.register(eventBus);
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         eventBus.addListener(this::enqueueIMC);

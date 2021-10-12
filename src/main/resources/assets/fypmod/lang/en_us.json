@@ -1,0 +1,35 @@
+{
+  "item.try1.item_one" : "item_1",
+  "block.try1.item_one_ore": "item_1_ore",
+  "block.try1.new_dirt": "NewDirt",
+  "item.try1.complex_item_one" : "complex_item_1",
+  "item.try1.weapon_one" : "Baton",
+  "item.try1.mod_collector" : "collector",
+  "item.try1.mod_collector_filled" : "filled collector",
+  "effect.try1.sickness" : "Sickness",
+  "item.minecraft.potion.effect.sickness" : "Potion of Sickness",
+  "item.minecraft.potion.effect.long_sickness" : "Potion of Sickness",
+  "item.minecraft.potion.effect.strong_sickness" : "Potion of Sickness",
+
+  "item.minecraft.splash_potion.effect.sickness" : "Splash Potion of Sickness",
+  "item.minecraft.splash_potion.effect.long_sickness" : "Splash Potion of Sickness",
+  "item.minecraft.splash_potion.effect.strong_sickness" : "Splash Potion of Sickness",
+
+  "item.minecraft.lingering_potion.effect.sickness" : "Lingering Potion of Sickness",
+  "item.minecraft.lingering_potion.effect.long_sickness" : "Lingering Potion of Sickness",
+  "item.minecraft.lingering_potion.effect.strong_sickness" : "Lingering Potion of Sickness",
+
+  "item.minecraft.tipped_arrow.effect.sickness" : "Tipped Arrow of Sickness",
+  "item.minecraft.tipped_arrow.effect.long_sickness" : "Tipped Arrow of Sickness",
+  "item.minecraft.tipped_arrow.effect.strong_sickness" : "Tipped Arrow of Sickness",
+
+
+  "entity.try1.new_mob_1":"new mob 1",
+  "entity.try1.mod_villager":"modded villager",
+  "entity.try1.mod_villager_jaw":"jaw modded villager",
+  "entity.try1.mod_villager_none":"none modded villager",
+  "entity.try1.mod_villager_neutral":"neutral modded villager",
+
+  "item.try1.mod_bottle_item" : "modBottle_item",
+  "itemGroup.mod1tab": "Mod 1"
+}
