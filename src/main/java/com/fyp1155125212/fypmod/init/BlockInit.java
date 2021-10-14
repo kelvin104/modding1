@@ -1,9 +1,11 @@
 package com.fyp1155125212.fypmod.init;
 
 import com.fyp1155125212.fypmod.ModTab;
+import com.fyp1155125212.fypmod.block.custom.ContaminatedDirt;
 import com.fyp1155125212.fypmod.fypMod;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -21,8 +23,12 @@ public class BlockInit {
 
     public static final RegistryObject<Block> ITEM_ONE_ORE = registerBlock("item_one_ore",
             () -> new Block(AbstractBlock.Properties.create(Material.ROCK)
-                    .harvestLevel(2).setRequiresTool().harvestTool(ToolType.PICKAXE).hardnessAndResistance(5f)));
+                    .harvestLevel(2).setRequiresTool().harvestTool(ToolType.PICKAXE).hardnessAndResistance(3f)));
 
+
+    public static final RegistryObject<Block> CONTAMINATED_DIRT = registerBlock("contaminated_dirt",
+            () -> new ContaminatedDirt(AbstractBlock.Properties.create(Material.EARTH).sound(SoundType.GROUND)
+                    .harvestTool(ToolType.SHOVEL).hardnessAndResistance(0.5f)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

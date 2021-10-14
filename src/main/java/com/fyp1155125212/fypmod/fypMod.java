@@ -1,14 +1,24 @@
 package com.fyp1155125212.fypmod;
 
+import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen;
+import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizenRenderer;
+import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizen_JRenderer;
+import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizen_NRenderer;
+import com.fyp1155125212.fypmod.entity.renderer.PoliceRenderer;
 import com.fyp1155125212.fypmod.init.BlockInit;
+import com.fyp1155125212.fypmod.init.EffectInit;
+import com.fyp1155125212.fypmod.init.EntityTypesInit;
 import com.fyp1155125212.fypmod.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -35,6 +45,9 @@ public class fypMod
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ItemInit.register(eventBus);
         BlockInit.register(eventBus);
+        EffectInit.EFFECTS.register(eventBus);
+        EffectInit.POTIONS.register(eventBus);
+        EntityTypesInit.ENTITY_TYPES.register(eventBus);
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         eventBus.addListener(this::enqueueIMC);
@@ -49,14 +62,23 @@ public class fypMod
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        EffectInit.addPotionRecipes();
+        DeferredWorkQueue.runLater(
+                () -> {
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizen.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.POLICE.get(), NeutralCitizen.setAttributes().create());
+                }
+        );
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.POLICE.get(), PoliceRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizenRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen_JRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen_NRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
