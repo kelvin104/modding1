@@ -1,14 +1,8 @@
 package com.fyp1155125212.fypmod;
 
 import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen;
-import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizenRenderer;
-import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizen_JRenderer;
-import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizen_NRenderer;
-import com.fyp1155125212.fypmod.entity.renderer.PoliceRenderer;
-import com.fyp1155125212.fypmod.init.BlockInit;
-import com.fyp1155125212.fypmod.init.EffectInit;
-import com.fyp1155125212.fypmod.init.EntityTypesInit;
-import com.fyp1155125212.fypmod.init.ItemInit;
+import com.fyp1155125212.fypmod.entity.renderer.*;
+import com.fyp1155125212.fypmod.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -48,6 +42,7 @@ public class fypMod
         EffectInit.EFFECTS.register(eventBus);
         EffectInit.POTIONS.register(eventBus);
         EntityTypesInit.ENTITY_TYPES.register(eventBus);
+        StructuresInit.register(eventBus);
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         eventBus.addListener(this::enqueueIMC);
@@ -71,6 +66,9 @@ public class fypMod
                     GlobalEntityTypeAttributes.put(EntityTypesInit.POLICE.get(), NeutralCitizen.setAttributes().create());
                 }
         );
+        event.enqueueWork( () -> {
+            StructuresInit.setupStructures();
+        });
 
     }
 
@@ -79,6 +77,7 @@ public class fypMod
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizenRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen_JRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen_NRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.COUGH.get(), CoughRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

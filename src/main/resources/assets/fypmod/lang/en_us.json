@@ -23,12 +23,14 @@
   "item.minecraft.tipped_arrow.effect.long_sickness" : "Tipped Arrow of Sickness",
   "item.minecraft.tipped_arrow.effect.strong_sickness" : "Tipped Arrow of Sickness",
 
-
-  
   "entity.fypmod.police":"Police",
   "entity.fypmod.neutral_citizen":"Neutral Citizen",
   "entity.fypmod.neutral_citizen_n":"Neutral Citizen (No Mask)",
   "entity.fypmod.neutral_citizen_j":"Neutral Citizen (Mask To Jaw)",
+  "item.fypmod.police_spawn_egg": "Police Spawn Egg",
+  "item.fypmod.neutral_citizen_spawn_egg": "Neutral Citizen Spawn Egg",
+  "item.fypmod.neutral_citizen_n_spawn_egg": "Neutral Citizen (No Mask) Spawn Egg",
+  "item.fypmod.neutral_citizen_j_spawn_egg": "Neutral Citizen (Mask To Jaw) Spawn Egg",
 
 
   "itemGroup.ModTab": "Mod Items"
