@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "try1:item/complex_item_one"
+    "layer0": "fypmod:item/complex_item_one"
   }
 }

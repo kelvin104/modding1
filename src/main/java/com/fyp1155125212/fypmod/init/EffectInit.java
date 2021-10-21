@@ -26,7 +26,7 @@ public class EffectInit {
             () -> new Potion(new EffectInstance(SICKNESS.get(),1200,2)));
 
     public static void addPotionRecipes(){
-        BrewingRecipeRegistry.addRecipe(new NewBrewingRecipes(Potions.AWKWARD,ItemInit.MOD_COLLECTOR_FILLED.get(),SICKNESS_POTION.get()));
+        BrewingRecipeRegistry.addRecipe(new NewBrewingRecipes(Potions.AWKWARD,ItemInit.FILLED_COLLECTOR.get(),SICKNESS_POTION.get()));
         BrewingRecipeRegistry.addRecipe(new NewBrewingRecipes(SICKNESS_POTION.get(), Items.GLOWSTONE_DUST, STRONG_SICKNESS_POTION.get()));
         BrewingRecipeRegistry.addRecipe(new NewBrewingRecipes(SICKNESS_POTION.get(),Items.REDSTONE, LONG_SICKNESS_POTION.get()));
 
