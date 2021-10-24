@@ -6,7 +6,7 @@ import net.minecraftforge.common.util.Lazy;
 
 public enum OreType {
 
-    ITEM_ONE_ORE(Lazy.of(BlockInit.ITEM_ONE_ORE), 8, 25, 128);
+    ITEM_ONE_ORE(Lazy.of(BlockInit.ITEM_ONE_ORE), 8, 30, 80);
 
     private final Lazy<Block> block;
     private final int maxVeinSize;

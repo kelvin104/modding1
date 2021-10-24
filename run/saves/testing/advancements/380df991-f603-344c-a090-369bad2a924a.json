@@ -5,15 +5,21 @@
     },
     "done": true
   },
-  "minecraft:recipes/redstone/lever": {
+  "minecraft:recipes/building_blocks/polished_blackstone_brick_stairs_from_polished_blackstone_stonecutting": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/cobblestone_stairs_from_cobblestone_stonecutting": {
+  "minecraft:recipes/building_blocks/chiseled_polished_blackstone": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/granite_stairs": {
+    "criteria": {
+      "has_granite": "2021-10-21 12:35:22 +0800"
     },
     "done": true
   },
@@ -35,27 +41,21 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/yellow_stained_glass_pane_from_glass_pane": {
-    "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
-    },
-    "done": true
-  },
   "minecraft:story/mine_stone": {
     "criteria": {
-      "get_stone": "2021-10-15 15:01:37 +0800"
+      "get_stone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/stone": {
+  "minecraft:recipes/building_blocks/polished_blackstone_slab_from_polished_blackstone_stonecutting": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
   "minecraft:recipes/decorations/furnace": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_cobblestone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
@@ -71,9 +71,15 @@
     },
     "done": false
   },
-  "minecraft:recipes/decorations/lime_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/misc/charcoal": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_log": "2021-10-21 12:24:48 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_brick_slab_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
@@ -83,9 +89,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/cobblestone_slab_from_cobblestone_stonecutting": {
+  "minecraft:recipes/building_blocks/polished_blackstone_bricks": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
@@ -95,15 +101,15 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/cyan_stained_glass_pane_from_glass_pane": {
-    "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/stone_slab_from_stone_stonecutting": {
     "criteria": {
       "has_stone": "2021-10-12 12:50:23 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_polished_blackstone_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
@@ -115,13 +121,19 @@
   },
   "minecraft:recipes/combat/stone_sword": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_cobblestone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/cobblestone_wall": {
+  "minecraft:recipes/decorations/blackstone_wall_from_blackstone_stonecutting": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_granite_slab_from_granite_stonecutting": {
+    "criteria": {
+      "has_granite": "2021-10-21 12:35:22 +0800"
     },
     "done": true
   },
@@ -131,21 +143,45 @@
     },
     "done": true
   },
-  "minecraft:recipes/tools/stone_pickaxe": {
+  "minecraft:recipes/building_blocks/blackstone_stairs": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/blue_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/tools/stone_pickaxe": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_cobblestone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dark_oak_wood": {
+    "criteria": {
+      "has_log": "2021-10-21 12:24:48 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/blackstone_stairs_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_polished_blackstone_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
   "minecraft:recipes/building_blocks/stone_slab": {
     "criteria": {
       "has_stone": "2021-10-12 12:50:23 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
@@ -167,27 +203,21 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/purple_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/polished_basalt_from_basalt_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_basalt": "2021-10-21 12:24:12 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/polished_basalt_from_basalt_stonecutting": {
+  "minecraft:recipes/building_blocks/polished_blackstone_slab": {
     "criteria": {
-      "has_basalt": "2021-10-15 15:01:26 +0800"
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
   "minecraft:recipes/building_blocks/stone_brick_slab_from_stone_stonecutting": {
     "criteria": {
       "has_stone": "2021-10-12 12:50:23 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/cobblestone_wall_from_cobblestone_stonecutting": {
-    "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
     },
     "done": true
   },
@@ -203,9 +233,27 @@
     },
     "done": true
   },
+  "minecraft:recipes/redstone/polished_blackstone_button": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/blackstone_slab_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
   "minecraft:recipes/tools/stone_shovel": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_cobblestone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_stairs": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
@@ -215,33 +263,63 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/polished_blackstone_wall": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
   "minecraft:recipes/tools/stone_hoe": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_cobblestone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/orange_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/dark_oak_planks": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_log": "2021-10-21 12:24:48 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/brown_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/decorations/polished_blackstone_wall_from_blackstone_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/cobblestone_slab": {
+  "minecraft:recipes/building_blocks/granite_slab_from_granite_stonecutting": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_granite": "2021-10-21 12:35:22 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/black_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/polished_granite_from_granite_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_granite": "2021-10-21 12:35:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_granite": {
+    "criteria": {
+      "has_stone": "2021-10-21 12:35:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_brick_slab_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/granite_slab": {
+    "criteria": {
+      "has_granite": "2021-10-21 12:35:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
@@ -257,39 +335,39 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/pink_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/decorations/granite_wall_from_granite_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_granite": "2021-10-21 12:35:22 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/cobblestone_stairs": {
+  "minecraft:recipes/building_blocks/polished_blackstone_brick_stairs_from_blackstone_stonecutting": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/white_stained_glass_pane_from_glass_pane": {
-    "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/light_gray_stained_glass_pane_from_glass_pane": {
-    "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/gray_stained_glass_pane_from_glass_pane": {
-    "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
   "minecraft:story/iron_tools": {
     "criteria": {
       "iron_pickaxe": "2021-10-12 13:22:09 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/polished_blackstone_wall_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/blackstone_wall": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/granite_wall": {
+    "criteria": {
+      "has_granite": "2021-10-21 12:35:22 +0800"
     },
     "done": true
   },
@@ -301,13 +379,43 @@
   },
   "minecraft:recipes/building_blocks/polished_basalt": {
     "criteria": {
-      "has_basalt": "2021-10-15 15:01:26 +0800"
+      "has_basalt": "2021-10-21 12:24:12 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/light_blue_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/polished_blackstone_stairs_from_polished_blackstone_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/polished_blackstone_pressure_plate": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/polished_blackstone_brick_wall_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_granite_stairs_from_granite_stonecutting": {
+    "criteria": {
+      "has_granite": "2021-10-21 12:35:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/blackstone_slab": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/polished_blackstone_brick_wall_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },
@@ -317,27 +425,39 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/red_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/polished_blackstone_stairs_from_blackstone_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/green_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/polished_blackstone_slab_from_blackstone_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_bricks_from_blackstone_stonecutting": {
+    "criteria": {
+      "has_blackstone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
   "minecraft:recipes/tools/stone_axe": {
     "criteria": {
-      "has_cobblestone": "2021-10-15 15:01:37 +0800"
+      "has_cobblestone": "2021-10-21 12:25:30 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/magenta_stained_glass_pane_from_glass_pane": {
+  "minecraft:recipes/building_blocks/granite_stairs_from_granite_stonecutting": {
     "criteria": {
-      "has_glass_pane": "2021-10-15 15:05:18 +0800"
+      "has_granite": "2021-10-21 12:35:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_blackstone_bricks_from_polished_blackstone_stonecutting": {
+    "criteria": {
+      "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
     },
     "done": true
   },

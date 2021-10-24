@@ -1,8 +1,7 @@
 package com.fyp1155125212.fypmod.init;
 
 import com.fyp1155125212.fypmod.fypMod;
-import com.fyp1155125212.fypmod.world.gen.ModOreGeneration;
-import com.fyp1155125212.fypmod.world.gen.ModStructureGeneration;
+import com.fyp1155125212.fypmod.world.gen.ModEntityGeneration;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -29,9 +28,9 @@ public class WorldEventsInit {
 
     @SubscribeEvent
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
-        ModStructureGeneration.generateStructures(event);
-        ModOreGeneration.generateOres(event);
-
+        StructureGenerationInit.generateStructures(event);
+        OreGenerationInit.generateOres(event);
+        ModEntityGeneration.onEntitySpawn(event);
     }
 
     @SubscribeEvent
@@ -53,13 +52,17 @@ public class WorldEventsInit {
                         + " is using Terraforged's ChunkGenerator.");
             }
 
-
+            // Prevent spawning our structure in Vanilla's superflat world
+           // if (serverWorld.getChunkProvider().generator instanceof FlatChunkGenerator &&
+             //       serverWorld.getDimensionKey().equals(World.OVERWORLD)) {
+              //  return;
+            //}
 
             // Adding our Structure to the Map
             Map<Structure<?>, StructureSeparationSettings> tempMap =
                     new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
-            tempMap.putIfAbsent(StructureInit.HOUSE.get(),
-                    DimensionStructuresSettings.field_236191_b_.get(StructureInit.HOUSE.get()));
+            tempMap.putIfAbsent(StructuresInit.HOUSE.get(),
+                    DimensionStructuresSettings.field_236191_b_.get(StructuresInit.HOUSE.get()));
             serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
         }
     }

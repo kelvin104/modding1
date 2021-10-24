@@ -12,12 +12,14 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.util.*;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
@@ -28,10 +30,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class NeutralCitizen_N extends AbstractIllagerEntity implements IAngerable {
+public class NeutralCitizen_N extends AbstractIllagerEntity implements IAngerable, IRangedAttackMob {
     private static final RangedInteger field_234196_bu_ = TickRangeConverter.convertRange(20, 39);
     private int field_234197_bv_;
     private UUID field_234198_bw_;
+    private boolean didSpit;
 
     public NeutralCitizen_N(EntityType<? extends AbstractIllagerEntity> p_i48556_1_, World p_i48556_2_) {
         super(p_i48556_1_, p_i48556_2_);
@@ -47,7 +50,7 @@ public class NeutralCitizen_N extends AbstractIllagerEntity implements IAngerabl
     // }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25D, 40, 20.0F));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
@@ -156,5 +159,29 @@ public class NeutralCitizen_N extends AbstractIllagerEntity implements IAngerabl
     @Override
     protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
         return super.getHurtSound(p_184601_1_);
+    }
+
+    private void spit(LivingEntity target) {
+        CoughEntity coughEntity = new CoughEntity(this.world, this);
+        double d0 = target.getPosX() - this.getPosX();
+        double d1 = target.getPosYHeight(0.3333333333333333D) - coughEntity.getPosY();
+        double d2 = target.getPosZ() - this.getPosZ();
+        float f = MathHelper.sqrt(d0 * d0 + d2 * d2) * 0.2F;
+        coughEntity.shoot(d0, d1 + (double)f, d2, 1.5F, 10.0F);
+        if (!this.isSilent()) {
+            this.world.playSound((PlayerEntity)null, this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GHAST_SHOOT, this.getSoundCategory(), 1.0F, 1.0F + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+        }
+
+        this.world.addEntity(coughEntity);
+        this.didSpit = true;
+    }
+
+    private void setDidSpit(boolean didSpitIn) {
+        this.didSpit = didSpitIn;
+    }
+
+    @Override
+    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
+        this.spit(target);
     }
 }
