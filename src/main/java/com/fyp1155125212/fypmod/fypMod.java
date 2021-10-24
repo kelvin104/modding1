@@ -5,10 +5,7 @@ import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizenRenderer;
 import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizen_JRenderer;
 import com.fyp1155125212.fypmod.entity.renderer.NeutralCitizen_NRenderer;
 import com.fyp1155125212.fypmod.entity.renderer.PoliceRenderer;
-import com.fyp1155125212.fypmod.init.BlockInit;
-import com.fyp1155125212.fypmod.init.EffectInit;
-import com.fyp1155125212.fypmod.init.EntityTypesInit;
-import com.fyp1155125212.fypmod.init.ItemInit;
+import com.fyp1155125212.fypmod.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -47,6 +44,7 @@ public class fypMod
         BlockInit.register(eventBus);
         EffectInit.EFFECTS.register(eventBus);
         EffectInit.POTIONS.register(eventBus);
+        StructureInit.register(eventBus);
         EntityTypesInit.ENTITY_TYPES.register(eventBus);
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -63,6 +61,11 @@ public class fypMod
     private void setup(final FMLCommonSetupEvent event)
     {
         EffectInit.addPotionRecipes();
+        event.enqueueWork( () -> {
+            StructureInit.setupStructures();
+                }
+
+        );
         DeferredWorkQueue.runLater(
                 () -> {
                     GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizen.setAttributes().create());
