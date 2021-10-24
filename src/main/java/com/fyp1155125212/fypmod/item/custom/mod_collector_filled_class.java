@@ -33,7 +33,7 @@ public class mod_collector_filled_class extends Item {
     private void rightClick1(BlockState clicked_block, ItemUseContext context, PlayerEntity player_entity) {
         if(clicked_block.getBlock() == Blocks.GRASS_BLOCK){
 
-                complex_item_one_class.applyEffect2(player_entity);
+                complex_item_one_class.applyEffect2(player_entity,100);
 
                 //stack.shrink(1);
                 player_entity.inventory.deleteStack(player_entity.getHeldItemMainhand());

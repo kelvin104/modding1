@@ -41,8 +41,8 @@ public class complex_item_one_class extends Item {
 
 
     ////for potion effect
-    public static void applyEffect2(PlayerEntity player_entity) {
-        player_entity.addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 100));
+    public static void applyEffect2(PlayerEntity player_entity, int time) {
+        player_entity.addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), time));
     }
 
 

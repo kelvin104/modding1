@@ -30,7 +30,7 @@ public class ContaminatedDirt extends Block {
         // complex_item_one_class.applyEffect1(entity,5);
         if (entity instanceof PlayerEntity){
 
-            complex_item_one_class.applyEffect2((PlayerEntity)entity);
+            complex_item_one_class.applyEffect2((PlayerEntity)entity, 100);
         }
         super.onEntityWalk(world, block_pos, entity);
     }

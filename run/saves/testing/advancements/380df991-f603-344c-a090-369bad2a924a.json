@@ -29,6 +29,12 @@
     },
     "done": true
   },
+  "minecraft:adventure/kill_a_mob": {
+    "criteria": {
+      "minecraft:zombie": "2021-10-24 18:18:54 +0800"
+    },
+    "done": true
+  },
   "minecraft:recipes/building_blocks/stone_bricks": {
     "criteria": {
       "has_stone": "2021-10-12 12:50:23 +0800"
@@ -92,6 +98,12 @@
   "minecraft:recipes/building_blocks/polished_blackstone_bricks": {
     "criteria": {
       "has_polished_blackstone": "2021-10-21 12:32:29 +0800"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2021-10-24 17:43:04 +0800"
     },
     "done": true
   },
@@ -221,6 +233,12 @@
     },
     "done": true
   },
+  "fypmod:advancement_1": {
+    "criteria": {
+      "requirement": "2021-10-24 15:38:08 +0800"
+    },
+    "done": true
+  },
   "minecraft:nether/netherite_armor": {
     "criteria": {
       "netherite_armor": "2021-10-14 16:25:32 +0800"
@@ -292,6 +310,12 @@
       "has_granite": "2021-10-21 12:35:22 +0800"
     },
     "done": true
+  },
+  "minecraft:adventure/kill_all_mobs": {
+    "criteria": {
+      "minecraft:zombie": "2021-10-24 18:18:54 +0800"
+    },
+    "done": false
   },
   "minecraft:recipes/building_blocks/polished_granite_from_granite_stonecutting": {
     "criteria": {
