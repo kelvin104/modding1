@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model":  "fypmod:block/item_one_ore" }
+  }
+}

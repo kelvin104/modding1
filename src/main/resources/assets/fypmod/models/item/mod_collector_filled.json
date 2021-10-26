@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "try1:item/mod_collector_filled"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "item.fypmod.item_one" : "Item 1",
+  "block.fypmod.item_one_ore": "Item 1 Ore",
+  "block.fypmod.contaminated_dirt": "Contaminated Dirt",
+  "item.fypmod.complex_item_one" : "Complex Item 1",
+  "item.fypmod.baton" : "Baton",
+  "item.fypmod.collector" : "Collector",
+  "item.fypmod.filled_collector" : "Filled collector",
+  "effect.fypmod.sickness" : "Sickness",
+  "item.minecraft.potion.effect.sickness" : "Potion of Sickness",
+  "item.minecraft.potion.effect.long_sickness" : "Potion of Sickness",
+  "item.minecraft.potion.effect.strong_sickness" : "Potion of Sickness",
+
+  "item.minecraft.splash_potion.effect.sickness" : "Splash Potion of Sickness",
+  "item.minecraft.splash_potion.effect.long_sickness" : "Splash Potion of Sickness",
+  "item.minecraft.splash_potion.effect.strong_sickness" : "Splash Potion of Sickness",
+
+  "item.minecraft.lingering_potion.effect.sickness" : "Lingering Potion of Sickness",
+  "item.minecraft.lingering_potion.effect.long_sickness" : "Lingering Potion of Sickness",
+  "item.minecraft.lingering_potion.effect.strong_sickness" : "Lingering Potion of Sickness",
+
+  "item.minecraft.tipped_arrow.effect.sickness" : "Tipped Arrow of Sickness",
+  "item.minecraft.tipped_arrow.effect.long_sickness" : "Tipped Arrow of Sickness",
+  "item.minecraft.tipped_arrow.effect.strong_sickness" : "Tipped Arrow of Sickness",
+
+  "entity.fypmod.police":"Police",
+  "entity.fypmod.neutral_citizen":"Neutral Citizen",
+  "entity.fypmod.neutral_citizen_n":"Neutral Citizen (No Mask)",
+  "entity.fypmod.neutral_citizen_j":"Neutral Citizen (Mask To Jaw)",
+  "item.fypmod.police_spawn_egg": "Police Spawn Egg",
+  "item.fypmod.neutral_citizen_spawn_egg": "Neutral Citizen Spawn Egg",
+  "item.fypmod.neutral_citizen_n_spawn_egg": "Neutral Citizen (No Mask) Spawn Egg",
+  "item.fypmod.neutral_citizen_j_spawn_egg": "Neutral Citizen (Mask To Jaw) Spawn Egg",
+
+
+  "itemGroup.ModTab": "Mod Items"
+}
