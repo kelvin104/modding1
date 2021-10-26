@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.init;
 
+import com.fyp1155125212.fypmod.effect.custom.VaccinatedEffect;
 import com.fyp1155125212.fypmod.effect.custom.sickness_effect_class;
 import com.fyp1155125212.fypmod.fypMod;
 import net.minecraft.item.Item;
@@ -17,6 +18,8 @@ public class EffectInit {
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTION_TYPES, fypMod.MOD_ID);
 
     public static final RegistryObject<Effect> SICKNESS = EFFECTS.register("sickness", sickness_effect_class::new);
+
+    public static final RegistryObject<Effect> VACCINATED = EFFECTS.register("vaccinated", VaccinatedEffect::new);
 
     public static final RegistryObject<Potion> SICKNESS_POTION = POTIONS.register("sickness",
             () -> new Potion(new EffectInstance(SICKNESS.get(),1200,0)));

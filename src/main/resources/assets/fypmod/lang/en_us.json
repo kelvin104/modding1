@@ -4,9 +4,13 @@
   "block.fypmod.contaminated_dirt": "Contaminated Dirt",
   "item.fypmod.complex_item_one" : "Complex Item 1",
   "item.fypmod.baton" : "Baton",
+  "item.fypmod.vaccine_100" : "Vaccine (100%)",
   "item.fypmod.collector" : "Collector",
   "item.fypmod.filled_collector" : "Filled collector",
+
   "effect.fypmod.sickness" : "Sickness",
+  "effect.fypmod.vaccinated" : "Vaccinated",
+
   "item.minecraft.potion.effect.sickness" : "Potion of Sickness",
   "item.minecraft.potion.effect.long_sickness" : "Potion of Sickness",
   "item.minecraft.potion.effect.strong_sickness" : "Potion of Sickness",

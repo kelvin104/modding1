@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.entity.custom;
 
+import com.fyp1155125212.fypmod.init.EffectInit;
 import com.fyp1155125212.fypmod.init.EntityTypesInit;
 import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
 import net.minecraft.block.AbstractBlock;
@@ -90,7 +91,9 @@ public class CoughEntity extends ProjectileEntity {
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
 
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 0F);
-            complex_item_one_class.applyEffect2((PlayerEntity)result.getEntity(), 99999);
+            if(!(((PlayerEntity) targeted_entity).isPotionActive(EffectInit.VACCINATED.get()))){
+                complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+            }
             playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
         }
 
