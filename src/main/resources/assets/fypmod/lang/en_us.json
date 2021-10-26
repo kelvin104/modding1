@@ -1,8 +1,10 @@
 {
-  "item.fypmod.item_one" : "Item 1",
-  "block.fypmod.item_one_ore": "Item 1 Ore",
+  "item.fypmod.medical_metal" : "Medical Metal",
+  "block.fypmod.medical_metal_ore": "Medical Metal Ore",
   "block.fypmod.contaminated_dirt": "Contaminated Dirt",
   "item.fypmod.complex_item_one" : "Complex Item 1",
+
+  "item.fypmod.mask" : "Mask",
   "item.fypmod.baton" : "Baton",
   "item.fypmod.vaccine_100" : "Vaccine (100%)",
   "item.fypmod.collector" : "Collector",
@@ -28,6 +30,7 @@
   "item.minecraft.tipped_arrow.effect.strong_sickness" : "Tipped Arrow of Sickness",
 
   "entity.fypmod.police":"Police",
+  "entity.fypmod.cough":"Cough",
   "entity.fypmod.neutral_citizen":"Neutral Citizen",
   "entity.fypmod.neutral_citizen_n":"Neutral Citizen (No Mask)",
   "entity.fypmod.neutral_citizen_j":"Neutral Citizen (Mask To Jaw)",

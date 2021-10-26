@@ -23,11 +23,14 @@ public class Vaccine_100 extends Item {
         if (!world.isRemote){
             PlayerEntity player_entity = Objects.requireNonNull(context.getPlayer());
             BlockState clicked_block = world.getBlockState(context.getPos());
-            vaccinatePlayer(player_entity);
+            vaccinatePlayer(player_entity,999999);
         }
         return super.onItemUseFirst(stack, context);
     }
-    public void vaccinatePlayer(PlayerEntity player){
-        player.addPotionEffect(new EffectInstance(EffectInit.VACCINATED.get(), 999999));
+    public void vaccinatePlayer(PlayerEntity player, int time){
+        if(!(player.isPotionActive(EffectInit.SICKNESS.get())))
+        {
+            player.addPotionEffect(new EffectInstance(EffectInit.VACCINATED.get(), time));
+        }
     }
 }

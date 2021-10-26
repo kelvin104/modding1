@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "fypmod:block/item_one_ore"
+    "all": "fypmod:block/medical_metal_ore"
   }
 }

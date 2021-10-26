@@ -180,7 +180,7 @@ public class NeutralCitizen_N extends AbstractIllagerEntity implements IAngerabl
         this.didSpit = didSpitIn;
     }
 
-    @Override
+
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
         this.spit(target);
     }

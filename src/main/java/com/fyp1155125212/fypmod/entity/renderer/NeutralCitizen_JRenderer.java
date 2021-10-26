@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
 import net.minecraft.util.ResourceLocation;
 
 public class NeutralCitizen_JRenderer extends MobRenderer<NeutralCitizen_J,NeutralCitizen_JModel<NeutralCitizen_J>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/modvillager/modvillager_n.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/modvillager/modvillager_jaw.png");
 
     public NeutralCitizen_JRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new NeutralCitizen_JModel<>(0.0F, 0.0F, 64, 64), 0.5F);

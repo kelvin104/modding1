@@ -21,7 +21,7 @@ public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS
             = DeferredRegister.create(ForgeRegistries.BLOCKS, fypMod.MOD_ID);
 
-    public static final RegistryObject<Block> ITEM_ONE_ORE = registerBlock("item_one_ore",
+    public static final RegistryObject<Block> MEDICAL_METAL_ORE = registerBlock("medical_metal_ore",
             () -> new Block(AbstractBlock.Properties.create(Material.ROCK)
                     .harvestLevel(2).setRequiresTool().harvestTool(ToolType.PICKAXE).hardnessAndResistance(3f)));
 

@@ -7,7 +7,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.horse.LlamaEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
@@ -86,7 +85,7 @@ public class CoughEntity extends ProjectileEntity {
         Entity entity = this.getShooter();
         Entity targeted_entity = result.getEntity();
         if (entity instanceof LivingEntity && !(targeted_entity instanceof PlayerEntity)) {
-            targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 1.0F);
+            targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 5.0F);
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
 

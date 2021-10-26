@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 public enum ModItemTier implements IItemTier {
 
     ITEM_ONE(3, 150, 4f, 12f, 10,
-            () -> Ingredient.fromItems(ItemInit.ITEM_ONE.get()));
+            () -> Ingredient.fromItems(ItemInit.MEDICAL_METAL.get()));
 
     private final int harvestLevel;
     private final int maxUses;
