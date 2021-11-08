@@ -2,6 +2,7 @@ package com.fyp1155125212.fypmod.entity.custom;
 
 import com.fyp1155125212.fypmod.init.EffectInit;
 import com.fyp1155125212.fypmod.init.EntityTypesInit;
+import com.fyp1155125212.fypmod.init.ItemInit;
 import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.Entity;
@@ -10,6 +11,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.play.server.SSpawnObjectPacket;
 import net.minecraft.particles.ParticleTypes;
@@ -31,6 +34,12 @@ public class CoughEntity extends ProjectileEntity {
     }
 
     public CoughEntity(World worldIn, NeutralCitizen_N p_i47273_2_) {
+        this(EntityTypesInit.COUGH.get(), worldIn);
+        super.setShooter(p_i47273_2_);
+        this.setPosition(p_i47273_2_.getPosX() - (double)(p_i47273_2_.getWidth() + 1.0F) * 0.5D * (double) MathHelper.sin(p_i47273_2_.renderYawOffset * ((float)Math.PI / 180F)), p_i47273_2_.getPosYEye() - (double)0.1F, p_i47273_2_.getPosZ() + (double)(p_i47273_2_.getWidth() + 1.0F) * 0.5D * (double)MathHelper.cos(p_i47273_2_.renderYawOffset * ((float)Math.PI / 180F)));
+    }
+
+    public CoughEntity(World worldIn, NeutralCitizen_J p_i47273_2_) {
         this(EntityTypesInit.COUGH.get(), worldIn);
         super.setShooter(p_i47273_2_);
         this.setPosition(p_i47273_2_.getPosX() - (double)(p_i47273_2_.getWidth() + 1.0F) * 0.5D * (double) MathHelper.sin(p_i47273_2_.renderYawOffset * ((float)Math.PI / 180F)), p_i47273_2_.getPosYEye() - (double)0.1F, p_i47273_2_.getPosZ() + (double)(p_i47273_2_.getWidth() + 1.0F) * 0.5D * (double)MathHelper.cos(p_i47273_2_.renderYawOffset * ((float)Math.PI / 180F)));
@@ -90,11 +99,26 @@ public class CoughEntity extends ProjectileEntity {
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
 
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 0F);
-            if(!(((PlayerEntity) targeted_entity).isPotionActive(EffectInit.VACCINATED.get()))){
+            playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
+            if((((PlayerEntity) targeted_entity).isPotionActive(EffectInit.VACCINATED.get()))){
+                playSound(SoundEvents.BLOCK_SAND_FALL,0.1F,0.1F);
+            }
+            else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
+                if(Math.random()<0){ //assume full protection
+                    complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+
+                }
+                else{
+                    playSound(SoundEvents.BLOCK_SAND_FALL,0.1F,0.1F);
+                }
+            }
+            else{
                 complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
             }
-            playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
+
+
         }
+        if(!world.isRemote){this.remove();}
 
     }
 

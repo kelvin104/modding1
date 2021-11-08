@@ -38,10 +38,9 @@ public class CoughRenderer extends EntityRenderer<CoughEntity> {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
-    /**
-     * Returns the location of an entity's texture.
-     */
+
     public ResourceLocation getEntityTexture(CoughEntity entity) {
+
         return TEXTURE;
     }
 }

@@ -5,6 +5,6 @@ import net.minecraft.potion.EffectType;
 
 public class VaccinatedEffect extends Effect {
     public VaccinatedEffect() {
-        super(EffectType.NEUTRAL, 7033134);
+        super(EffectType.NEUTRAL, 12183029);
     }
 }

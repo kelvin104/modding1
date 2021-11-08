@@ -3,6 +3,8 @@ package com.fyp1155125212.fypmod;
 import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen;
 import com.fyp1155125212.fypmod.entity.renderer.*;
 import com.fyp1155125212.fypmod.init.*;
+import com.fyp1155125212.fypmod.world.biome.ModBiomes;
+import com.fyp1155125212.fypmod.world.gen.ModBiomeGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -43,6 +45,7 @@ public class fypMod
         EffectInit.POTIONS.register(eventBus);
         EntityTypesInit.ENTITY_TYPES.register(eventBus);
         StructuresInit.register(eventBus);
+        ModBiomes.register(eventBus);
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         eventBus.addListener(this::enqueueIMC);
@@ -68,16 +71,18 @@ public class fypMod
         );
         event.enqueueWork( () -> {
             StructuresInit.setupStructures();
+            ModBiomeGeneration.generateBiomes();
         });
 
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.COUGH.get(), CoughRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.POLICE.get(), PoliceRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizenRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen_JRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen_NRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.COUGH.get(), CoughRenderer::new);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
