@@ -2,6 +2,8 @@ package com.fyp1155125212.fypmod.entity.custom;
 
 
 
+import com.fyp1155125212.fypmod.entity.custom_entity_goal.MeleeAttackNonPlayerGoal;
+import com.fyp1155125212.fypmod.entity.custom_entity_goal.RangedAttackPlayerGoal;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -40,17 +42,10 @@ public class NeutralCitizen_N extends AbstractIllagerEntity implements IAngerabl
         super(p_i48556_1_, p_i48556_2_);
     }
 
-    //  @Nullable
-    // public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
-    //    ILivingEntityData ilivingentitydata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-    //   ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
-    //  this.setEquipmentBasedOnDifficulty(difficultyIn);
-    // this.setEnchantmentBasedOnDifficulty(difficultyIn);
-    //return ilivingentitydata;
-    // }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25D, 40, 20.0F));
+        this.goalSelector.addGoal(1, new MeleeAttackNonPlayerGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(1, new RangedAttackPlayerGoal(this, 1.25D, 40, 20.0F));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
