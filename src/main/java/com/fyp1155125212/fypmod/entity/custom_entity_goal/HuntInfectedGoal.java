@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TargetGoal;
+import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.SoundEvents;
@@ -51,7 +52,7 @@ public class HuntInfectedGoal<T extends LivingEntity> extends TargetGoal {
                 return false;
             } else {
                 this.findNearestTarget();
-                return (this.nearestTarget != null) && (this.nearestTarget instanceof PlayerEntity) && (this.nearestTarget.isPotionActive(EffectInit.SICKNESS.get()));
+                return (this.nearestTarget != null) && ((this.nearestTarget instanceof PlayerEntity)||(this.nearestTarget instanceof AbstractVillagerEntity)) && (this.nearestTarget.isPotionActive(EffectInit.SICKNESS.get()));
             }
         }
 

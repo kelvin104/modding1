@@ -21,21 +21,7 @@ public class ModEventBusEvents {
         ModSpawnEggItem.initSpawnEggs();
     }
 
-    @SubscribeEvent
-    public static void onFoodEaten(LivingEntityUseItemEvent.Finish event){
-        Entity livingEntity = event.getEntityLiving();
-        if(livingEntity instanceof PlayerEntity){
 
-            PlayerEntity player = (PlayerEntity) livingEntity;
-            if(!((player).isPotionActive(EffectInit.CLEANED.get()))){
-                if(Math.random()<0.5){
-                    complex_item_one_class.applyEffect2(player, 99999);
-
-                }
-            }
-        }
-
-    }
 
 }
 

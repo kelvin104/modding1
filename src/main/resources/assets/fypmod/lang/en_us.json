@@ -15,6 +15,7 @@
 
   "effect.fypmod.sickness" : "Sickness",
   "effect.fypmod.vaccinated" : "Vaccinated",
+  "effect.fypmod.cleaned" : "Cleaned",
 
   "item.minecraft.potion.effect.sickness" : "Potion of Sickness",
   "item.minecraft.potion.effect.long_sickness" : "Potion of Sickness",

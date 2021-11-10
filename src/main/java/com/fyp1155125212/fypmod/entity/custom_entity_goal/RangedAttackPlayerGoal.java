@@ -4,6 +4,7 @@ import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 
@@ -47,7 +48,7 @@ public class RangedAttackPlayerGoal extends Goal {
      */
     public boolean shouldExecute() {
         LivingEntity livingentity = this.entityHost.getAttackTarget();
-        if (livingentity != null && livingentity.isAlive() && this.entityHost.getAttackTarget() instanceof PlayerEntity) {
+        if (livingentity != null && livingentity.isAlive() &&( (livingentity instanceof PlayerEntity)||(livingentity instanceof AbstractVillagerEntity))) {
             this.attackTarget = livingentity;
             return true;
         } else {

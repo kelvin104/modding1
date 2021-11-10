@@ -3,6 +3,7 @@ package com.fyp1155125212.fypmod.entity.custom_entity_goal;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.util.EntityPredicates;
@@ -84,7 +85,7 @@ public class MeleeAttackNonPlayerGoal extends Goal {
         } else if (!this.attacker.isWithinHomeDistanceFromPosition(livingentity.getPosition())) {
             return false;
         } else {
-            return !(livingentity instanceof PlayerEntity) || !livingentity.isSpectator() && !((PlayerEntity)livingentity).isCreative();
+            return ((!(livingentity instanceof PlayerEntity) || !livingentity.isSpectator() && !((PlayerEntity)livingentity).isCreative())&&(!(livingentity instanceof AbstractVillagerEntity)) );
         }
     }
 

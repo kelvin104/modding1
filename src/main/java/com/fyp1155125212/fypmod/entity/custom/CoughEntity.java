@@ -8,6 +8,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.play.server.SSpawnObjectPacket;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -93,8 +95,11 @@ public class CoughEntity extends ProjectileEntity {
         super.onEntityHit(result);
         Entity entity = this.getShooter();
         Entity targeted_entity = result.getEntity();
-        if (entity instanceof LivingEntity && !(targeted_entity instanceof PlayerEntity)) {
+        if (entity instanceof LivingEntity && !(targeted_entity instanceof PlayerEntity)&&!(targeted_entity instanceof AbstractVillagerEntity)) {
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 5.0F);
+        }
+        if (entity instanceof LivingEntity && targeted_entity instanceof AbstractVillagerEntity){
+            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
 
@@ -105,31 +110,32 @@ public class CoughEntity extends ProjectileEntity {
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
                 if(Math.random()<0.1){ //assume full protection
-                    complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
 
                 }
 
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_HALF.get())){
                 if(Math.random()<0.6){ //assume full protection
-                    complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
 
                 }
 
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_NONE.get())){
                 if(Math.random()<0.9){ //assume full protection
-                    complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
 
                 }
 
             }
             else{
-                complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+                ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
             }
 
 
         }
+
         if(!world.isRemote){this.remove();}
 
     }
