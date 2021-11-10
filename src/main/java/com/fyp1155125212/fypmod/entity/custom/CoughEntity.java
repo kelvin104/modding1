@@ -104,13 +104,25 @@ public class CoughEntity extends ProjectileEntity {
                 playSound(SoundEvents.BLOCK_SAND_FALL,0.1F,0.1F);
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
-                if(Math.random()<0){ //assume full protection
+                if(Math.random()<0.1){ //assume full protection
                     complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
 
                 }
-                else{
-                    playSound(SoundEvents.BLOCK_SAND_FALL,0.1F,0.1F);
+
+            }
+            else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_HALF.get())){
+                if(Math.random()<0.6){ //assume full protection
+                    complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+
                 }
+
+            }
+            else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_NONE.get())){
+                if(Math.random()<0.9){ //assume full protection
+                    complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);
+
+                }
+
             }
             else{
                 complex_item_one_class.applyEffect2((PlayerEntity)targeted_entity, 99999);

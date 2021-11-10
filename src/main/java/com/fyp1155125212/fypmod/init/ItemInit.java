@@ -27,11 +27,17 @@ public class ItemInit {
             () -> new mod_collector_filled_class(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<Item> VACCINE_100 = ITEMS.register("vaccine_100",
             () -> new Vaccine_100(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> HANDRUB = ITEMS.register("handrub",
+            () -> new HandRub(new Item.Properties().group(ModTab.MODDED_ITEMS)));
 
     public static final RegistryObject<Item> BATON = ITEMS.register("baton",
             () -> new mod_weapon_class(ModItemTier.ITEM_ONE, 0,5f,new Item.Properties().group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<Item> MASK = ITEMS.register("mask",
-            () -> new MaskItem(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+            () -> new MaskFull(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> MASK_HALF = ITEMS.register("mask_half",
+            () -> new MaskHalf(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> MASK_NONE = ITEMS.register("mask_none",
+            () -> new MaskNone(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
 
 
     public static final RegistryObject<ModSpawnEggItem> POLICE_SPAWN_EGG = ITEMS.register("police_spawn_egg",

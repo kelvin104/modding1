@@ -60,7 +60,7 @@ public class fypMod
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        EffectInit.addPotionRecipes();
+        //EffectInit.addPotionRecipes();
         DeferredWorkQueue.runLater(
                 () -> {
                     GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizen.setAttributes().create());

@@ -19,7 +19,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class CoughRenderer extends EntityRenderer<CoughEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/cough/coughs.png");
+    private static final ResourceLocation COUGH_TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/cough/coughs.png");
     private final CoughModel<CoughEntity> model = new CoughModel<>();
 
     public CoughRenderer(EntityRendererManager renderManagerIn) {
@@ -32,15 +32,12 @@ public class CoughRenderer extends EntityRenderer<CoughEntity> {
         matrixStackIn.rotate(Vector3f.YP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationYaw, entityIn.rotationYaw) - 90.0F));
         matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch)));
         this.model.setRotationAngles(entityIn, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F);
-        IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.model.getRenderType(TEXTURE));
+        IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.model.getRenderType(COUGH_TEXTURE));
         this.model.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         matrixStackIn.pop();
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
 
-    public ResourceLocation getEntityTexture(CoughEntity entity) {
-
-        return TEXTURE;
-    }
+    public ResourceLocation getEntityTexture(CoughEntity entity) {return COUGH_TEXTURE;}
 }

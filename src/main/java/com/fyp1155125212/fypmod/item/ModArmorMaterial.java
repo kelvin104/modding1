@@ -15,8 +15,16 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements IArmorMaterial {
 
-    RUBBER("rubber", 7, new int[] { 0, 0, 0, 0 }, 12,
+    RUBBER("rubber", 300, new int[] { 0, 0, 0, 0 }, 12,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 0.0f, () -> {
+        return Ingredient.fromItems(ItemInit.MEDICAL_METAL.get());
+    }),
+    HALF("half", 100, new int[] { 0, 0, 0, 0 }, 12,
+    SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 0.0f, () -> {
+        return Ingredient.fromItems(ItemInit.MEDICAL_METAL.get());
+    }),
+    NONE("none", 40, new int[] { 0, 0, 0, 0 }, 12,
+    SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 0.0f, () -> {
         return Ingredient.fromItems(ItemInit.MEDICAL_METAL.get());
     });
 

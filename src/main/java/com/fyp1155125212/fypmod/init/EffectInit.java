@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.init;
 
+import com.fyp1155125212.fypmod.effect.custom.Cleaned;
 import com.fyp1155125212.fypmod.effect.custom.VaccinatedEffect;
 import com.fyp1155125212.fypmod.effect.custom.SicknessEffect;
 import com.fyp1155125212.fypmod.fypMod;
@@ -21,6 +22,10 @@ public class EffectInit {
 
     public static final RegistryObject<Effect> VACCINATED = EFFECTS.register("vaccinated", VaccinatedEffect::new);
 
+    public static final RegistryObject<Effect> CLEANED = EFFECTS.register("cleaned", Cleaned::new);
+
+
+    /*
     public static final RegistryObject<Potion> SICKNESS_POTION = POTIONS.register("sickness",
             () -> new Potion(new EffectInstance(SICKNESS.get(),1200,0)));
     public static final RegistryObject<Potion> LONG_SICKNESS_POTION = POTIONS.register("long_sickness",
@@ -65,5 +70,5 @@ public class EffectInit {
             }
         }
     }
-
+    */
 }

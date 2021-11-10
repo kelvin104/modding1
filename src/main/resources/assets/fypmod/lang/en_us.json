@@ -5,8 +5,11 @@
   "item.fypmod.complex_item_one" : "Complex Item 1",
 
   "item.fypmod.mask" : "Mask",
+  "item.fypmod.mask_half" : "Mask (half)",
+  "item.fypmod.mask_none" : "Mask (none)",
   "item.fypmod.baton" : "Baton",
   "item.fypmod.vaccine_100" : "Vaccine (100%)",
+  "item.fypmod.handrub" : "Hand Rub",
   "item.fypmod.collector" : "Collector",
   "item.fypmod.filled_collector" : "Filled collector",
 

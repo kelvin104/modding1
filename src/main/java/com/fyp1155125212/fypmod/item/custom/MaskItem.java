@@ -7,8 +7,9 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.IArmorMaterial;
 
 public class MaskItem extends ArmorItem {
-    public MaskItem(Properties p_i48534_3_) {
-        super(ModArmorMaterial.RUBBER, EquipmentSlotType.HEAD, p_i48534_3_);
+    public MaskItem(ModArmorMaterial material, EquipmentSlotType type, Properties p_i48534_3_) {
+        super(material,type, p_i48534_3_);
+
     }
 
     @Override
