@@ -60,8 +60,8 @@ public class ModBiomes {
 
         return (new Biome.Builder()).precipitation(Biome.RainType.NONE).category(Biome.Category.DESERT).depth(depth).scale(scale)
                 .temperature(1.5F).downfall(0.9F).setEffects((new BiomeAmbience.Builder()).setWaterColor(12162386).setWaterFogColor(12371337)
-                        .setFogColor(2828837).withSkyColor(getSkyColorWithTemperatureModifier(0.8F)).withFoliageColor(2828837).withGrassColor(2888837)
-                        .setParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.05f)).withSkyColor(2828837)
+                        .setFogColor(2828837).withSkyColor(getSkyColorWithTemperatureModifier(0.8F)).withFoliageColor(2828837).withGrassColor(599306)
+                        .setParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.05f)).withSkyColor(5460819)
                         .setAmbientSound(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP)
                         .setMoodSound(new MoodSoundAmbience(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
                         .setAdditionsSound(new SoundAdditionsAmbience(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111D))

@@ -52,7 +52,7 @@ public class HuntInfectedGoal<T extends LivingEntity> extends TargetGoal {
                 return false;
             } else {
                 this.findNearestTarget();
-                return (this.nearestTarget != null) && ((this.nearestTarget instanceof PlayerEntity)||(this.nearestTarget instanceof AbstractVillagerEntity)) && (this.nearestTarget.isPotionActive(EffectInit.SICKNESS.get()));
+                return ((this.nearestTarget != null) && ((this.nearestTarget instanceof PlayerEntity)||(this.nearestTarget instanceof AbstractVillagerEntity)) && (this.nearestTarget.isPotionActive(EffectInit.SICKNESS.get())));
             }
         }
 

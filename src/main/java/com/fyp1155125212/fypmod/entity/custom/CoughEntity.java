@@ -99,7 +99,7 @@ public class CoughEntity extends ProjectileEntity {
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 5.0F);
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof AbstractVillagerEntity){
-            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+            ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
 
@@ -110,27 +110,27 @@ public class CoughEntity extends ProjectileEntity {
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
                 if(Math.random()<0.1){ //assume full protection
-                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+                    ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
 
                 }
 
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_HALF.get())){
                 if(Math.random()<0.6){ //assume full protection
-                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+                    ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
 
                 }
 
             }
             else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_NONE.get())){
                 if(Math.random()<0.9){ //assume full protection
-                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+                    ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
 
                 }
 
             }
             else{
-                ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+                ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
             }
 
 

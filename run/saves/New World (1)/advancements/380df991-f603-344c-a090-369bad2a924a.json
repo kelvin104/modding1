@@ -1,8 +1,8 @@
 {
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:forest": "2021-10-27 15:56:47 +0800",
-      "minecraft:river": "2021-10-27 15:57:54 +0800"
+      "minecraft:river": "2021-11-23 11:05:59 +0800",
+      "minecraft:plains": "2021-11-23 11:05:34 +0800"
     },
     "done": false
   },
