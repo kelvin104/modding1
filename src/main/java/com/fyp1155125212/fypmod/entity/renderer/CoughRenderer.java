@@ -22,8 +22,8 @@ public class CoughRenderer extends EntityRenderer<CoughEntity> {
     private static final ResourceLocation COUGH_TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/cough/coughs.png");
     private final CoughModel<CoughEntity> model = new CoughModel<>();
 
-    public CoughRenderer(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn);
+    public CoughRenderer(EntityRendererManager manager) {
+        super(manager);
     }
 
     public void render(CoughEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {

@@ -2,6 +2,7 @@ package com.fyp1155125212.fypmod.world.biome;
 
 import com.fyp1155125212.fypmod.fypMod;
 import com.fyp1155125212.fypmod.init.EntityTypesInit;
+import com.fyp1155125212.fypmod.world.gen.structure.ModStructureBuilder;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -57,6 +58,8 @@ public class ModBiomes {
         DefaultBiomeFeatures.withNormalMushroomGeneration(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withLavaAndWaterSprings(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withFrozenTopLayer(biomegenerationsettings$builder);
+
+        biomegenerationsettings$builder.withStructure(ModStructureBuilder.ModStructureFeatures.MOD_HOUSE);
 
         return (new Biome.Builder()).precipitation(Biome.RainType.NONE).category(Biome.Category.DESERT).depth(depth).scale(scale)
                 .temperature(1.5F).downfall(0.9F).setEffects((new BiomeAmbience.Builder()).setWaterColor(12162386).setWaterFogColor(12371337)
