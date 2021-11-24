@@ -24,12 +24,15 @@ import net.minecraftforge.common.extensions.IForgeStructure;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.Supplier;
 
-/*public class ModStructureBuilder {
+/*
+public class ModStructureBuilder {
+
     public abstract static class ModStructure<C extends IFeatureConfig> extends net.minecraftforge.registries.ForgeRegistryEntry<net.minecraft.world.gen.feature.structure.Structure<?>> implements net.minecraftforge.common.extensions.IForgeStructure{
         public static final BiMap<String, Structure<?>> NAME_STRUCTURE_BIMAP = HashBiMap.create();
         private static final Map<Structure<?>, GenerationStage.Decoration> STRUCTURE_DECORATION_STAGE_MAP = Maps.newHashMap();
-        public static final Structure<NoFeatureConfig> HOUSE = Registry.register("House", new HouseStructure(), GenerationStage.Decoration.SURFACE_STRUCTURES);
+  //      public static final Structure<NoFeatureConfig> HOUSE = Registry.register("House", new HouseStructure(), GenerationStage.Decoration.SURFACE_STRUCTURES);
         private static <F extends net.minecraft.world.gen.feature.structure.Structure<?>> F register(String name, F structure, GenerationStage.Decoration decorationStage) {
             NAME_STRUCTURE_BIMAP.put(name.toLowerCase(Locale.ROOT), structure);
             STRUCTURE_DECORATION_STAGE_MAP.put(structure, decorationStage);
@@ -38,7 +41,7 @@ import java.util.Map;
 
     }
     public static class ModStructureFeatures{
-        public static final StructureFeature<NoFeatureConfig, ? extends Structure<NoFeatureConfig>> MOD_HOUSE = register("mod_house", ModStructure.HOUSE.withConfiguration(NoFeatureConfig.INSTANCE));
+      //  public static final StructureFeature<NoFeatureConfig, ? extends Structure<NoFeatureConfig>> MOD_HOUSE = register("mod_house", ModStructure.HOUSE.withConfiguration(NoFeatureConfig.INSTANCE));
 
         private static <FC extends IFeatureConfig, F extends Structure<FC>> StructureFeature<FC, F> register(String name, StructureFeature<FC, F> structure) {
             return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, name, structure);
@@ -50,5 +53,13 @@ import java.util.Map;
     //public static void withModStructures(BiomeGenerationSettings.Builder builder) {
     //    biomegenerationsettings$builder.withStructure(ModStructureFeatures.MOD_HOUSE);
    // }
+
 }
+
 */
+//public class ModStructureBuilder extends BiomeGenerationSettings.Builder {
+  //  public BiomeGenerationSettings.Builder withStructureSupplier(Supplier<StructureFeature<?, ?>> structure) {
+    //    this.structures.add(structure);
+      //  return this;
+    //}
+//}

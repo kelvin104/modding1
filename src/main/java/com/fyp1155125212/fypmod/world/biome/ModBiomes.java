@@ -2,7 +2,8 @@ package com.fyp1155125212.fypmod.world.biome;
 
 import com.fyp1155125212.fypmod.fypMod;
 import com.fyp1155125212.fypmod.init.EntityTypesInit;
-import com.fyp1155125212.fypmod.world.gen.structure.ModStructureBuilder;
+//import com.fyp1155125212.fypmod.world.gen.structure.ModStructureBuilder;
+import com.fyp1155125212.fypmod.world.gen.structure.structures.HouseStructure;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -43,8 +44,11 @@ public class ModBiomes {
                 new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), 50, 0, 1));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
                 new MobSpawnInfo.Spawners(EntityTypesInit.POLICE.get(), 100, 1, 1));
+
         BiomeGenerationSettings.Builder biomegenerationsettings$builder =
                 (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
+       // BiomeGenerationSettings.Builder biomegenerationsettings$builder =
+         //       (new ModStructureBuilder().withStructureSupplier(new HouseStructure())).withSurfaceBuilder(surfaceBuilder);
 
 
 
@@ -59,7 +63,7 @@ public class ModBiomes {
         DefaultBiomeFeatures.withLavaAndWaterSprings(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withFrozenTopLayer(biomegenerationsettings$builder);
 
-        biomegenerationsettings$builder.withStructure(ModStructureBuilder.ModStructureFeatures.MOD_HOUSE);
+        //biomegenerationsettings$builder.withStructure(ModStructureBuilder.ModStructureFeatures.MOD_HOUSE);
 
         return (new Biome.Builder()).precipitation(Biome.RainType.NONE).category(Biome.Category.DESERT).depth(depth).scale(scale)
                 .temperature(1.5F).downfall(0.9F).setEffects((new BiomeAmbience.Builder()).setWaterColor(12162386).setWaterFogColor(12371337)
