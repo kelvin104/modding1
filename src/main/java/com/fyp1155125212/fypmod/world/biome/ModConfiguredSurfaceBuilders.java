@@ -16,7 +16,7 @@ public class ModConfiguredSurfaceBuilders {
             SurfaceBuilder.DEFAULT.func_242929_a(new SurfaceBuilderConfig(
                    // Blocks.COARSE_DIRT.getDefaultState(),
                     Blocks.DIRT.getDefaultState(),
-                    Blocks.GRASS.getDefaultState(),
+                    Blocks.GRASS_BLOCK.getDefaultState(),
                     BlockInit.CONTAMINATED_DIRT.get().getDefaultState()
             )));
 

@@ -17,7 +17,7 @@ import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
+//@OnlyIn(Dist.CLIENT)
 public class CoughRenderer extends EntityRenderer<CoughEntity> {
     private static final ResourceLocation COUGH_TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/cough/coughs.png");
     private final CoughModel<CoughEntity> model = new CoughModel<>();

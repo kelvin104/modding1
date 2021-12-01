@@ -1,5 +1,8 @@
 package com.fyp1155125212.fypmod.entity.custom_entity_goal;
 
+import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen;
+import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen_J;
+import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen_N;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
@@ -48,7 +51,11 @@ public class RangedAttackPlayerGoal extends Goal {
      */
     public boolean shouldExecute() {
         LivingEntity livingentity = this.entityHost.getAttackTarget();
-        if (livingentity != null && livingentity.isAlive() &&( (livingentity instanceof PlayerEntity)||(livingentity instanceof AbstractVillagerEntity))) {
+        if (livingentity != null && livingentity.isAlive()
+                &&(!(livingentity instanceof NeutralCitizen))
+                &&(!(livingentity instanceof NeutralCitizen_J))
+                &&(!(livingentity instanceof NeutralCitizen_N))
+                &&( (livingentity instanceof PlayerEntity)||(livingentity instanceof AbstractVillagerEntity))) {
             this.attackTarget = livingentity;
             return true;
         } else {

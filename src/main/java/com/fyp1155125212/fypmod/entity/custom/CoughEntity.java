@@ -28,6 +28,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class CoughEntity extends ProjectileEntity {
 
@@ -55,6 +56,7 @@ public class CoughEntity extends ProjectileEntity {
         for(int i = 0; i < 7; ++i) {
             double d0 = 0.4D + 0.1D * (double)i;
             worldIn.addParticle(ParticleTypes.SPIT, x, y, z, p_i47274_8_ * d0, p_i47274_10_, p_i47274_12_ * d0);
+
         }
 
         this.setMotion(p_i47274_8_, p_i47274_10_, p_i47274_12_);
@@ -152,6 +154,7 @@ public class CoughEntity extends ProjectileEntity {
     }
 
     public IPacket<?> createSpawnPacket() {
-        return new SSpawnObjectPacket(this);
+       // return new SSpawnObjectPacket(this);
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

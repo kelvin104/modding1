@@ -2,6 +2,7 @@ package com.fyp1155125212.fypmod.entity.custom;
 
 
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.MeleeAttackNonPlayerGoal;
+import com.fyp1155125212.fypmod.entity.custom_entity_goal.ModNearestAttackableTargetGoal;
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.RangedAttackPlayerGoal;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -64,7 +65,7 @@ public class NeutralCitizen_J extends AbstractVillagerEntity implements IAngerab
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::func_233680_b_));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
+        this.targetSelector.addGoal(3, new ModNearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
        // this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, false));
         this.targetSelector.addGoal(4, new ResetAngerGoal<>(this, false));
     }

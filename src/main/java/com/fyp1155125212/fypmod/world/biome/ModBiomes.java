@@ -14,6 +14,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,6 +35,7 @@ public class ModBiomes {
     private static Biome makePollutedBiome(final Supplier<ConfiguredSurfaceBuilder<?>> surfaceBuilder, float depth, float scale) {
         MobSpawnInfo.Builder mobspawninfo$builder = new MobSpawnInfo.Builder();
 
+        //biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_SNOWY);
         DefaultBiomeFeatures.withPassiveMobs(mobspawninfo$builder);
         DefaultBiomeFeatures.withBatsAndHostiles(mobspawninfo$builder);
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
@@ -44,17 +46,21 @@ public class ModBiomes {
                 new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), 50, 0, 1));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
                 new MobSpawnInfo.Spawners(EntityTypesInit.POLICE.get(), 100, 1, 1));
-
         BiomeGenerationSettings.Builder biomegenerationsettings$builder =
                 (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_SNOWY);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_DESERT);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_PLAINS);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_SAVANNA);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_TAIGA);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.SHIPWRECK);
+
        // BiomeGenerationSettings.Builder biomegenerationsettings$builder =
          //       (new ModStructureBuilder().withStructureSupplier(new HouseStructure())).withSurfaceBuilder(surfaceBuilder);
 
 
-
-
         DefaultBiomeFeatures.withCavesAndCanyons(biomegenerationsettings$builder);
-
+        DefaultBiomeFeatures.withDesertDeadBushes(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withLavaAndWaterLakes(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withCommonOverworldBlocks(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withOverworldOres(biomegenerationsettings$builder);
@@ -63,7 +69,7 @@ public class ModBiomes {
         DefaultBiomeFeatures.withLavaAndWaterSprings(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withFrozenTopLayer(biomegenerationsettings$builder);
 
-        //biomegenerationsettings$builder.withStructure(ModStructureBuilder.ModStructureFeatures.MOD_HOUSE);
+
 
         return (new Biome.Builder()).precipitation(Biome.RainType.NONE).category(Biome.Category.DESERT).depth(depth).scale(scale)
                 .temperature(1.5F).downfall(0.9F).setEffects((new BiomeAmbience.Builder()).setWaterColor(12162386).setWaterFogColor(12371337)
