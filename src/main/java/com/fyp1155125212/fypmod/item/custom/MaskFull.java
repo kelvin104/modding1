@@ -26,7 +26,7 @@ public class MaskFull extends MaskItem{
             PlayerEntity playerEntity = (PlayerEntity)(p_77663_3_);
 
             if(playerEntity.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get()){
-                if(Math.random()<0.1) {
+                if(Math.random()<0.9) {
                     playerEntity.getItemStackFromSlot(EquipmentSlotType.HEAD).damageItem(1, playerEntity, (entity) -> {
 
                         entity.setItemStackToSlot(EquipmentSlotType.HEAD, new ItemStack(ItemInit.MASK_HALF.get()));

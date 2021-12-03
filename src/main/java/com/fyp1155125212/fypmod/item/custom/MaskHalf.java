@@ -2,6 +2,7 @@ package com.fyp1155125212.fypmod.item.custom;
 
 import com.fyp1155125212.fypmod.init.ItemInit;
 import com.fyp1155125212.fypmod.item.ModArmorMaterial;
+import com.fyp1155125212.fypmod.item.ModArmorMaterialHalf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -10,7 +11,7 @@ import net.minecraft.world.World;
 
 public class MaskHalf extends MaskItem{
     public MaskHalf(Properties p_i48534_3_) {
-        super(ModArmorMaterial.HALF, EquipmentSlotType.HEAD, p_i48534_3_);
+        super(ModArmorMaterialHalf.HALF, EquipmentSlotType.HEAD, p_i48534_3_);
     }
 
 

@@ -39,21 +39,16 @@ public class ModBiomes {
         DefaultBiomeFeatures.withPassiveMobs(mobspawninfo$builder);
         DefaultBiomeFeatures.withBatsAndHostiles(mobspawninfo$builder);
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN.get(), 50, 6, 6));
+                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN.get(), 10, 5, 5));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), 50, 1, 2));
+                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), 10, 3, 3));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), 50, 0, 1));
+                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), 10, 1, 1));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.POLICE.get(), 100, 1, 1));
+                new MobSpawnInfo.Spawners(EntityTypesInit.POLICE.get(), 5, 1, 1));
         BiomeGenerationSettings.Builder biomegenerationsettings$builder =
                 (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
-        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_SNOWY);
         biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_DESERT);
-        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_PLAINS);
-        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_SAVANNA);
-        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_TAIGA);
-        biomegenerationsettings$builder.withStructure(StructureFeatures.SHIPWRECK);
 
        // BiomeGenerationSettings.Builder biomegenerationsettings$builder =
          //       (new ModStructureBuilder().withStructureSupplier(new HouseStructure())).withSurfaceBuilder(surfaceBuilder);
