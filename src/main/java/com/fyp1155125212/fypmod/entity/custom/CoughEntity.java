@@ -7,19 +7,27 @@ import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
+import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SSpawnObjectPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.RangedInteger;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.TickRangeConverter;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
@@ -30,7 +38,14 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class CoughEntity extends ProjectileEntity {
+import javax.annotation.Nullable;
+import java.util.UUID;
+
+public class CoughEntity extends ProjectileEntity implements IAngerable {
+    private Entity targetInContact = null;
+    private static final DataParameter<Integer> ANGER_TIME = EntityDataManager.createKey(CoughEntity.class, DataSerializers.VARINT);
+    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.convertRange(20, 39);
+    private UUID field_234231_bH_;
 
     public CoughEntity(EntityType<? extends CoughEntity> p_i50162_1_, World p_i50162_2_) {
         super(p_i50162_1_, p_i50162_2_);
@@ -101,10 +116,11 @@ public class CoughEntity extends ProjectileEntity {
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 5.0F);
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof AbstractVillagerEntity){
+            this.targetInContact = targeted_entity;
             ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
-
+            this.targetInContact = targeted_entity;
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 0F);
             playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
             if((((PlayerEntity) targeted_entity).isPotionActive(EffectInit.VACCINATED.get()))){
@@ -138,7 +154,7 @@ public class CoughEntity extends ProjectileEntity {
 
         }
 
-        if(!world.isRemote){this.remove();}
+        //if(!world.isRemote){this.remove();}
 
     }
 
@@ -150,11 +166,58 @@ public class CoughEntity extends ProjectileEntity {
 
     }
 
+    private boolean isExist(){
+        return getAngerTime()>0;
+    }
+
     protected void registerData() {
+   //     this.dataManager.register(EXIST_TIME, 0);
     }
 
     public IPacket<?> createSpawnPacket() {
        // return new SSpawnObjectPacket(this);
         return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    public int getAngerTime() {
+        return this.dataManager.get(ANGER_TIME);
+    }
+
+    public void setAngerTime(int time) {
+        this.dataManager.set(ANGER_TIME, time);
+    }
+
+    public void func_230258_H__() {
+        this.setAngerTime(ANGER_TIME_RANGE.getRandomWithinRange(this.rand));
+    }
+
+    @Nullable
+    public UUID getAngerTarget() {
+        return this.field_234231_bH_;
+    }
+
+    public void setAngerTarget(@Nullable UUID target) {
+        this.field_234231_bH_ = target;
+    }
+
+    @Override
+    public void setRevengeTarget(@Nullable LivingEntity livingBase) {
+
+    }
+
+    @Override
+    public void setAttackingPlayer(@Nullable PlayerEntity p_230246_1_) {
+
+    }
+
+    @Override
+    public void setAttackTarget(@Nullable LivingEntity entitylivingbaseIn) {
+
+    }
+
+    @Nullable
+    @Override
+    public LivingEntity getAttackTarget() {
+        return null;
     }
 }
