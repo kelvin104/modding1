@@ -1,8 +1,6 @@
 package com.fyp1155125212.fypmod.init;
 
-import com.fyp1155125212.fypmod.effect.custom.Cleaned;
-import com.fyp1155125212.fypmod.effect.custom.VaccinatedEffect;
-import com.fyp1155125212.fypmod.effect.custom.SicknessEffect;
+import com.fyp1155125212.fypmod.effect.custom.*;
 import com.fyp1155125212.fypmod.fypMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,6 +21,10 @@ public class EffectInit {
     public static final RegistryObject<Effect> VACCINATED = EFFECTS.register("vaccinated", VaccinatedEffect::new);
 
     public static final RegistryObject<Effect> CLEANED = EFFECTS.register("cleaned", Cleaned::new);
+
+    public static final RegistryObject<Effect> VIRUS_CARRIER = EFFECTS.register("virus_carrier", VirusCarrierEffect::new);
+
+    public static final RegistryObject<Effect> SEVERE_SICKNESS = EFFECTS.register("severe_sickness", SevereSicknessEffect::new);
 
 
     /*

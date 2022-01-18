@@ -4,6 +4,7 @@ package com.fyp1155125212.fypmod.entity.custom;
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.MeleeAttackNonPlayerGoal;
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.ModNearestAttackableTargetGoal;
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.RangedAttackPlayerGoal;
+import com.fyp1155125212.fypmod.init.EffectInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -21,6 +22,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.GroundPathNavigator;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
@@ -48,14 +50,17 @@ public class NeutralCitizen_J extends AbstractVillagerEntity implements IAngerab
 
     }
 
-    //  @Nullable
-    // public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
-    //    ILivingEntityData ilivingentitydata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-    //   ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
-    //  this.setEquipmentBasedOnDifficulty(difficultyIn);
-    // this.setEnchantmentBasedOnDifficulty(difficultyIn);
-    //return ilivingentitydata;
-    // }
+    @Nullable
+    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
+        ILivingEntityData ilivingentitydata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+        ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
+        this.setEquipmentBasedOnDifficulty(difficultyIn);
+        this.setEnchantmentBasedOnDifficulty(difficultyIn);
+        if(Math.random() < 0.2){
+            this.addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 99999));
+        }
+        return ilivingentitydata;
+    }
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackNonPlayerGoal(this, 1.0D, true));
