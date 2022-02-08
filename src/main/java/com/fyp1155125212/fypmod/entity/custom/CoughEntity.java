@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.entity.custom;
 
+import com.fyp1155125212.fypmod.effect.custom.SicknessEffect;
 import com.fyp1155125212.fypmod.init.EffectInit;
 import com.fyp1155125212.fypmod.init.EntityTypesInit;
 import com.fyp1155125212.fypmod.init.ItemInit;
@@ -7,19 +8,28 @@ import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IAngerable;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
+import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SSpawnObjectPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.RangedInteger;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.TickRangeConverter;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
@@ -28,8 +38,16 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.network.NetworkHooks;
 
-public class CoughEntity extends ProjectileEntity {
+import javax.annotation.Nullable;
+import java.util.UUID;
+
+public class CoughEntity extends ProjectileEntity implements IAngerable {
+    private Entity targetInContact = null;
+    private static final DataParameter<Integer> ANGER_TIME = EntityDataManager.createKey(CoughEntity.class, DataSerializers.VARINT);
+    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.convertRange(20, 39);
+    private UUID field_234231_bH_;
 
     public CoughEntity(EntityType<? extends CoughEntity> p_i50162_1_, World p_i50162_2_) {
         super(p_i50162_1_, p_i50162_2_);
@@ -55,6 +73,7 @@ public class CoughEntity extends ProjectileEntity {
         for(int i = 0; i < 7; ++i) {
             double d0 = 0.4D + 0.1D * (double)i;
             worldIn.addParticle(ParticleTypes.SPIT, x, y, z, p_i47274_8_ * d0, p_i47274_10_, p_i47274_12_ * d0);
+
         }
 
         this.setMotion(p_i47274_8_, p_i47274_10_, p_i47274_12_);
@@ -98,47 +117,68 @@ public class CoughEntity extends ProjectileEntity {
         if (entity instanceof LivingEntity && !(targeted_entity instanceof PlayerEntity)&&!(targeted_entity instanceof AbstractVillagerEntity)) {
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 5.0F);
         }
+        applyVirusCarrierEffect(targeted_entity);
+
         if (entity instanceof LivingEntity && targeted_entity instanceof AbstractVillagerEntity){
-            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+
+            ((LivingEntity)targeted_entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
         }
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
-
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 0F);
-            playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
-            if((((PlayerEntity) targeted_entity).isPotionActive(EffectInit.VACCINATED.get()))){
-                playSound(SoundEvents.BLOCK_SAND_FALL,0.1F,0.1F);
-            }
-            else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
-                if(Math.random()<0.1){ //assume full protection
-                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
-
-                }
-
-            }
-            else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_HALF.get())){
-                if(Math.random()<0.6){ //assume full protection
-                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
-
-                }
-
-            }
-            else if((((PlayerEntity) targeted_entity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_NONE.get())){
-                if(Math.random()<0.9){ //assume full protection
-                    ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
-
-                }
-
-            }
-            else{
-                ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
-            }
-
-
+            //playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
+            applySicknessEffect(targeted_entity, multiplierForSicknessEffect(entity, targeted_entity));
         }
 
-        if(!world.isRemote){this.remove();}
+        //if(!world.isRemote){this.remove();}
 
     }
+
+    public void applyVirusCarrierEffect(Entity entity){
+        if (entity instanceof PlayerEntity){
+            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 1500));
+        }
+        if (entity instanceof AbstractVillagerEntity){
+            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 500));
+        }
+    }
+
+    public static void applySicknessEffect(Entity entity, double multiplier){
+        if(Math.random() < multiplier){
+            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
+            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 99999));
+        }
+    }
+
+    public static double multiplierForSicknessEffect(Entity attackingEntity, Entity targetedEntity){
+        double maskVariable = 1;
+        double vaccinatedVariable = 1;
+        double virusCarrierVariable = 1;
+
+        if(targetedEntity instanceof PlayerEntity){
+            if((((PlayerEntity)targetedEntity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
+                maskVariable = 0.9;
+            }
+            else if((((PlayerEntity)targetedEntity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_HALF.get())){
+                maskVariable = 0.6;
+            }
+            else if((((PlayerEntity)targetedEntity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_NONE.get())){
+                maskVariable = 0.1;
+            }
+        }
+
+        if((((LivingEntity)targetedEntity).isPotionActive(EffectInit.VACCINATED.get()))){
+            vaccinatedVariable = 0; //to be modified
+        }
+
+        if((attackingEntity != null)&&(((LivingEntity)attackingEntity).isPotionActive(EffectInit.VIRUS_CARRIER.get()))){
+            virusCarrierVariable = 1.5; //to be modified
+        }
+
+        return maskVariable * vaccinatedVariable * virusCarrierVariable;
+    }
+
+
+
 
     protected void func_230299_a_(BlockRayTraceResult result) {
         super.func_230299_a_(result);
@@ -148,10 +188,58 @@ public class CoughEntity extends ProjectileEntity {
 
     }
 
+    private boolean isExist(){
+        return (getAngerTime() > 0);
+    }
+
     protected void registerData() {
+        this.dataManager.register(ANGER_TIME, 0);
     }
 
     public IPacket<?> createSpawnPacket() {
-        return new SSpawnObjectPacket(this);
+       // return new SSpawnObjectPacket(this);
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    public int getAngerTime() {
+        return this.dataManager.get(ANGER_TIME);
+    }
+
+    public void setAngerTime(int time) {
+        this.dataManager.set(ANGER_TIME, time);
+    }
+
+    public void func_230258_H__() {
+        this.setAngerTime(ANGER_TIME_RANGE.getRandomWithinRange(this.rand));
+    }
+
+    @Nullable
+    public UUID getAngerTarget() {
+        return this.field_234231_bH_;
+    }
+
+    public void setAngerTarget(@Nullable UUID target) {
+        this.field_234231_bH_ = target;
+    }
+
+    @Override
+    public void setRevengeTarget(@Nullable LivingEntity livingBase) {
+
+    }
+
+    @Override
+    public void setAttackingPlayer(@Nullable PlayerEntity p_230246_1_) {
+
+    }
+
+    @Override
+    public void setAttackTarget(@Nullable LivingEntity entitylivingbaseIn) {
+
+    }
+
+    @Nullable
+    @Override
+    public LivingEntity getAttackTarget() {
+        return null;
     }
 }

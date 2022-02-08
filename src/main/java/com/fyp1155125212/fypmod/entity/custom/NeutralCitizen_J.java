@@ -2,7 +2,9 @@ package com.fyp1155125212.fypmod.entity.custom;
 
 
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.MeleeAttackNonPlayerGoal;
+import com.fyp1155125212.fypmod.entity.custom_entity_goal.ModNearestAttackableTargetGoal;
 import com.fyp1155125212.fypmod.entity.custom_entity_goal.RangedAttackPlayerGoal;
+import com.fyp1155125212.fypmod.init.EffectInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -14,11 +16,13 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.MerchantOffer;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.GroundPathNavigator;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
@@ -31,24 +35,32 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class NeutralCitizen_J extends AbstractIllagerEntity implements IAngerable, IRangedAttackMob {
+public class NeutralCitizen_J extends AbstractVillagerEntity implements IAngerable, IRangedAttackMob {
     private static final RangedInteger field_234196_bu_ = TickRangeConverter.convertRange(20, 39);
     private int field_234197_bv_;
     private UUID field_234198_bw_;
     private boolean didSpit;
 
-    public NeutralCitizen_J(EntityType<? extends AbstractIllagerEntity> p_i48556_1_, World p_i48556_2_) {
+    public NeutralCitizen_J(EntityType<? extends AbstractVillagerEntity> p_i48556_1_, World p_i48556_2_) {
         super(p_i48556_1_, p_i48556_2_);
     }
 
-    //  @Nullable
-    // public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
-    //    ILivingEntityData ilivingentitydata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-    //   ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
-    //  this.setEquipmentBasedOnDifficulty(difficultyIn);
-    // this.setEnchantmentBasedOnDifficulty(difficultyIn);
-    //return ilivingentitydata;
-    // }
+    @Override
+    protected void onVillagerTrade(MerchantOffer offer) {
+
+    }
+
+    @Nullable
+    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
+        ILivingEntityData ilivingentitydata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+        ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
+        this.setEquipmentBasedOnDifficulty(difficultyIn);
+        this.setEnchantmentBasedOnDifficulty(difficultyIn);
+        if(Math.random() < 0.2){
+            this.addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 99999));
+        }
+        return ilivingentitydata;
+    }
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackNonPlayerGoal(this, 1.0D, true));
@@ -58,7 +70,7 @@ public class NeutralCitizen_J extends AbstractIllagerEntity implements IAngerabl
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::func_233680_b_));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
+        this.targetSelector.addGoal(3, new ModNearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
        // this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, false));
         this.targetSelector.addGoal(4, new ResetAngerGoal<>(this, false));
     }
@@ -68,7 +80,7 @@ public class NeutralCitizen_J extends AbstractIllagerEntity implements IAngerabl
     }
 
     public AbstractIllagerEntity.ArmPose getArmPose() {
-        return ArmPose.NEUTRAL;
+        return AbstractIllagerEntity.ArmPose.NEUTRAL;
     }
 
     @Override
@@ -97,15 +109,9 @@ public class NeutralCitizen_J extends AbstractIllagerEntity implements IAngerabl
         this.setAngerTime(field_234196_bu_.getRandomWithinRange(this.rand));
     }
 
-    @Override
-    public void applyWaveBonus(int wave, boolean p_213660_2_) {
 
-    }
 
-    @Override
-    public boolean canJoinRaid() {
-        return false;
-    }
+
 
     @Override
     public void onDeath(DamageSource cause) {
@@ -138,9 +144,11 @@ public class NeutralCitizen_J extends AbstractIllagerEntity implements IAngerabl
     }
 
     @Override
-    public SoundEvent getRaidLossSound() {
-        return null;
+    protected void populateTradeData() {
+
     }
+
+
 
     @Nullable
     @Override
@@ -186,5 +194,11 @@ public class NeutralCitizen_J extends AbstractIllagerEntity implements IAngerabl
 
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
         this.spit(target);
+    }
+
+    @Nullable
+    @Override
+    public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
+        return null;
     }
 }

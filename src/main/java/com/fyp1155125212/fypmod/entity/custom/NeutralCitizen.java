@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.entity.custom;
 
+import com.fyp1155125212.fypmod.entity.custom_entity_goal.ModNearestAttackableTargetGoal;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -11,6 +12,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.MerchantOffer;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,16 +29,21 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class NeutralCitizen extends AbstractIllagerEntity implements IAngerable {
+public class NeutralCitizen extends AbstractVillagerEntity implements IAngerable {
      private static final RangedInteger field_234196_bu_ = TickRangeConverter.convertRange(20, 39);
     private int field_234197_bv_;
     private UUID field_234198_bw_;
 
-    public NeutralCitizen(EntityType<? extends AbstractIllagerEntity> p_i48556_1_, World p_i48556_2_) {
+    public NeutralCitizen(EntityType<? extends AbstractVillagerEntity> p_i48556_1_, World p_i48556_2_) {
         super(p_i48556_1_, p_i48556_2_);
     }
 
-  //  @Nullable
+    @Override
+    protected void onVillagerTrade(MerchantOffer offer) {
+
+    }
+
+    //  @Nullable
    // public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
     //    ILivingEntityData ilivingentitydata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
      //   ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
@@ -50,7 +57,7 @@ public class NeutralCitizen extends AbstractIllagerEntity implements IAngerable 
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
+        this.targetSelector.addGoal(3, new ModNearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
        // this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, false));
         this.targetSelector.addGoal(4, new ResetAngerGoal<>(this, false));
     }
@@ -60,7 +67,7 @@ public class NeutralCitizen extends AbstractIllagerEntity implements IAngerable 
     }
 
     public AbstractIllagerEntity.ArmPose getArmPose() {
-            return ArmPose.NEUTRAL;
+            return AbstractIllagerEntity.ArmPose.NEUTRAL;
     }
 
     @Override
@@ -89,16 +96,7 @@ public class NeutralCitizen extends AbstractIllagerEntity implements IAngerable 
         this.setAngerTime(field_234196_bu_.getRandomWithinRange(this.rand));
     }
 
-    @Override
-    public void applyWaveBonus(int wave, boolean p_213660_2_) {
 
-    }
-
-
-    @Override
-    public boolean canJoinRaid() {
-        return false;
-    }
 
     @Override
     public void onDeath(DamageSource cause) {
@@ -131,8 +129,8 @@ public class NeutralCitizen extends AbstractIllagerEntity implements IAngerable 
     }
 
     @Override
-    public SoundEvent getRaidLossSound() {
-        return null;
+    protected void populateTradeData() {
+
     }
 
     @Nullable
@@ -155,5 +153,11 @@ public class NeutralCitizen extends AbstractIllagerEntity implements IAngerable 
     @Override
     protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
         return super.getHurtSound(p_184601_1_);
+    }
+
+    @Nullable
+    @Override
+    public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
+        return null;
     }
 }

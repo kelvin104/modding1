@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ModEntityGeneration {
-    public static void onEntitySpawn(final BiomeLoadingEvent event) {
+   // public static void onEntitySpawn(final BiomeLoadingEvent event) {
 
-        addEntityToSpecificBiomes(event, EntityTypesInit.POLICE.get(), 50, 4, 10,
-                Biomes.PLAINS);
-    }
+     //   addEntityToSpecificBiomes(event, EntityTypesInit.POLICE.get(), 50, 4, 10,
+      //          Biomes.PLAINS);
+    //}
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
                                                         int weight, int minCount, int maxCount, RegistryKey<Biome>... biomes) {

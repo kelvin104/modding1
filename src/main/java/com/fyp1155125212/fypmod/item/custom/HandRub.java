@@ -21,21 +21,7 @@ public class HandRub extends Item {
     public HandRub(Properties p_i48487_1_) {
         super(p_i48487_1_);
     }
-/*
-    @Override
-    public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
-        World world = context.getWorld();
-        if (!world.isRemote){
-            PlayerEntity player_entity = Objects.requireNonNull(context.getPlayer());
-            BlockState clicked_block = world.getBlockState(context.getPos());
-            player_entity.addPotionEffect(new EffectInstance(EffectInit.CLEANED.get(), 200));
-            if(!player_entity.isCreative()){
-                stack.shrink(1);
-            }
-        }
-        return super.onItemUseFirst(stack, context);
-    }
-*/
+
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity p_77659_2_, Hand p_77659_3_) {
 

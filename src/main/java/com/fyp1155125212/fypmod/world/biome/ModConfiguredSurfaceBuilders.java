@@ -14,8 +14,9 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 public class ModConfiguredSurfaceBuilders {
     public static ConfiguredSurfaceBuilder<?> POLLUTED_SURFACE = register("polluted_surface",
             SurfaceBuilder.DEFAULT.func_242929_a(new SurfaceBuilderConfig(
-                    Blocks.PODZOL.getDefaultState(),
+                   // Blocks.COARSE_DIRT.getDefaultState(),
                     Blocks.DIRT.getDefaultState(),
+                    Blocks.GRASS_BLOCK.getDefaultState(),
                     BlockInit.CONTAMINATED_DIRT.get().getDefaultState()
             )));
 

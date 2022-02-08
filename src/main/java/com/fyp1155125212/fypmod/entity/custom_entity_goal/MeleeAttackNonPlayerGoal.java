@@ -51,7 +51,10 @@ public class MeleeAttackNonPlayerGoal extends Goal {
                 return false;
             }else if(this.attacker.getAttackTarget() instanceof PlayerEntity){
                 return false;
-            } else {
+            }
+            else if(this.attacker.getAttackTarget() instanceof AbstractVillagerEntity){
+                return false;
+            }else {
                 if (canPenalize) {
                     if (--this.delayCounter <= 0) {
                         this.path = this.attacker.getNavigator().pathfind(livingentity, 0);

@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
+//@OnlyIn(Dist.CLIENT)
 public class CoughModel<T extends Entity> extends SegmentedModel<T> {
     private final ModelRenderer main = new ModelRenderer(this);
 

@@ -6,12 +6,14 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.MerchantOffer;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,12 +30,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class Police extends AbstractIllagerEntity implements IAngerable {
+public class Police extends AbstractVillagerEntity implements IAngerable {
     private static final RangedInteger field_234196_bu_ = TickRangeConverter.convertRange(20, 39);
     private int field_234197_bv_;
     private UUID field_234198_bw_;
 
-    public Police(EntityType<? extends AbstractIllagerEntity> p_i48556_1_, World p_i48556_2_) {
+    public Police(EntityType<? extends AbstractVillagerEntity> p_i48556_1_, World p_i48556_2_) {
         super(p_i48556_1_, p_i48556_2_);
     }
 
@@ -44,6 +46,17 @@ public class Police extends AbstractIllagerEntity implements IAngerable {
         return ilivingentitydata;
      }
 
+    @Nullable
+    @Override
+    public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
+        return null;
+    }
+
+    @Override
+    protected void onVillagerTrade(MerchantOffer offer) {
+
+    }
+
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
@@ -52,6 +65,7 @@ public class Police extends AbstractIllagerEntity implements IAngerable {
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         //this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::func_233680_b_));
         this.targetSelector.addGoal(3, new HuntInfectedGoal<>(this, PlayerEntity.class, false));
+        this.targetSelector.addGoal(3, new HuntInfectedGoal<>(this, AbstractVillagerEntity.class, false));
         //this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, false));
         this.targetSelector.addGoal(4, new ResetAngerGoal<>(this, false));
     }
@@ -61,13 +75,9 @@ public class Police extends AbstractIllagerEntity implements IAngerable {
     }
 
     public AbstractIllagerEntity.ArmPose getArmPose() {
-        return ArmPose.ATTACKING;
+        return AbstractIllagerEntity.ArmPose.ATTACKING;
     }
 
-    @Override
-    public boolean canJoinRaid() {
-        return false;
-    }
 
     @Override
     public void onDeath(DamageSource cause) {
@@ -100,6 +110,11 @@ public class Police extends AbstractIllagerEntity implements IAngerable {
     }
 
     @Override
+    protected void populateTradeData() {
+
+    }
+
+    @Override
     public int getAngerTime() {
         return this.field_234197_bv_;
     }
@@ -125,15 +140,6 @@ public class Police extends AbstractIllagerEntity implements IAngerable {
         this.setAngerTime(field_234196_bu_.getRandomWithinRange(this.rand));
     }
 
-    @Override
-    public void applyWaveBonus(int wave, boolean p_213660_2_) {
-
-    }
-
-    @Override
-    public SoundEvent getRaidLossSound() {
-        return null;
-    }
 
     @Nullable
     @Override

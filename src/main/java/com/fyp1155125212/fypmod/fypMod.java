@@ -6,11 +6,18 @@ import com.fyp1155125212.fypmod.init.*;
 import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
 import com.fyp1155125212.fypmod.world.biome.ModBiomes;
 import com.fyp1155125212.fypmod.world.gen.ModBiomeGeneration;
+import com.fyp1155125212.fypmod.world.gen.structure.structures.HouseStructure;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.structure.DesertPyramidStructure;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
@@ -117,9 +124,8 @@ public class fypMod
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
+        public static void onStructuresRegistry(final RegistryEvent.Register<Structure<?>> event) {
+
         }
     }
 }

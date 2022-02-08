@@ -30,7 +30,7 @@ public class WorldEventsInit {
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
         StructureGenerationInit.generateStructures(event);
         OreGenerationInit.generateOres(event);
-        ModEntityGeneration.onEntitySpawn(event);
+    //    ModEntityGeneration.onEntitySpawn(event);
     }
 
     @SubscribeEvent

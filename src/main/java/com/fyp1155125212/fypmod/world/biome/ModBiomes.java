@@ -2,6 +2,8 @@ package com.fyp1155125212.fypmod.world.biome;
 
 import com.fyp1155125212.fypmod.fypMod;
 import com.fyp1155125212.fypmod.init.EntityTypesInit;
+//import com.fyp1155125212.fypmod.world.gen.structure.ModStructureBuilder;
+import com.fyp1155125212.fypmod.world.gen.structure.structures.HouseStructure;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -12,6 +14,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,24 +35,27 @@ public class ModBiomes {
     private static Biome makePollutedBiome(final Supplier<ConfiguredSurfaceBuilder<?>> surfaceBuilder, float depth, float scale) {
         MobSpawnInfo.Builder mobspawninfo$builder = new MobSpawnInfo.Builder();
 
+        //biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_SNOWY);
         DefaultBiomeFeatures.withPassiveMobs(mobspawninfo$builder);
         DefaultBiomeFeatures.withBatsAndHostiles(mobspawninfo$builder);
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN.get(), 50, 6, 6));
+                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN.get(), 10, 5, 5));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), 50, 1, 2));
+                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), 10, 3, 3));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), 50, 0, 1));
+                new MobSpawnInfo.Spawners(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), 10, 1, 1));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER,
-                new MobSpawnInfo.Spawners(EntityTypesInit.POLICE.get(), 100, 1, 1));
+                new MobSpawnInfo.Spawners(EntityTypesInit.POLICE.get(), 5, 1, 1));
         BiomeGenerationSettings.Builder biomegenerationsettings$builder =
                 (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
+        biomegenerationsettings$builder.withStructure(StructureFeatures.VILLAGE_DESERT);
 
-
+       // BiomeGenerationSettings.Builder biomegenerationsettings$builder =
+         //       (new ModStructureBuilder().withStructureSupplier(new HouseStructure())).withSurfaceBuilder(surfaceBuilder);
 
 
         DefaultBiomeFeatures.withCavesAndCanyons(biomegenerationsettings$builder);
-
+        DefaultBiomeFeatures.withDesertDeadBushes(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withLavaAndWaterLakes(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withCommonOverworldBlocks(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withOverworldOres(biomegenerationsettings$builder);
@@ -58,10 +64,12 @@ public class ModBiomes {
         DefaultBiomeFeatures.withLavaAndWaterSprings(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withFrozenTopLayer(biomegenerationsettings$builder);
 
+
+
         return (new Biome.Builder()).precipitation(Biome.RainType.NONE).category(Biome.Category.DESERT).depth(depth).scale(scale)
                 .temperature(1.5F).downfall(0.9F).setEffects((new BiomeAmbience.Builder()).setWaterColor(12162386).setWaterFogColor(12371337)
-                        .setFogColor(2828837).withSkyColor(getSkyColorWithTemperatureModifier(0.8F)).withFoliageColor(2828837).withGrassColor(2888837)
-                        .setParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.05f)).withSkyColor(2828837)
+                        .setFogColor(2828837).withSkyColor(getSkyColorWithTemperatureModifier(0.8F)).withFoliageColor(2828837).withGrassColor(599306)
+                        .setParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.05f)).withSkyColor(5460819)
                         .setAmbientSound(SoundEvents.AMBIENT_CRIMSON_FOREST_LOOP)
                         .setMoodSound(new MoodSoundAmbience(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
                         .setAdditionsSound(new SoundAdditionsAmbience(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111D))
