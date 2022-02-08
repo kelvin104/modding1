@@ -1,6 +1,6 @@
 package com.fyp1155125212.fypmod.init;
 
-import com.fyp1155125212.fypmod.effect.custom.sickness_effect_class;
+import com.fyp1155125212.fypmod.effect.custom.*;
 import com.fyp1155125212.fypmod.fypMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,8 +16,18 @@ public class EffectInit {
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, fypMod.MOD_ID);
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTION_TYPES, fypMod.MOD_ID);
 
-    public static final RegistryObject<Effect> SICKNESS = EFFECTS.register("sickness", sickness_effect_class::new);
+    public static final RegistryObject<Effect> SICKNESS = EFFECTS.register("sickness", SicknessEffect::new);
 
+    public static final RegistryObject<Effect> VACCINATED = EFFECTS.register("vaccinated", VaccinatedEffect::new);
+
+    public static final RegistryObject<Effect> CLEANED = EFFECTS.register("cleaned", Cleaned::new);
+
+    public static final RegistryObject<Effect> VIRUS_CARRIER = EFFECTS.register("virus_carrier", VirusCarrierEffect::new);
+
+    public static final RegistryObject<Effect> SEVERE_SICKNESS = EFFECTS.register("severe_sickness", SevereSicknessEffect::new);
+
+
+    /*
     public static final RegistryObject<Potion> SICKNESS_POTION = POTIONS.register("sickness",
             () -> new Potion(new EffectInstance(SICKNESS.get(),1200,0)));
     public static final RegistryObject<Potion> LONG_SICKNESS_POTION = POTIONS.register("long_sickness",
@@ -62,5 +72,5 @@ public class EffectInit {
             }
         }
     }
-
+    */
 }

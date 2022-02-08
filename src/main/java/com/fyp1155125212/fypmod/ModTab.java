@@ -9,7 +9,7 @@ public class ModTab {
     public static final ItemGroup MODDED_ITEMS = new ItemGroup("ModTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ItemInit.ITEM_ONE.get());
+            return new ItemStack(ItemInit.VACCINE_100.get());
         }
     };
 

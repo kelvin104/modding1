@@ -17,29 +17,40 @@ public class ItemInit {
             DeferredRegister.create(ForgeRegistries.ITEMS, fypMod.MOD_ID);
 
 
-    public static final RegistryObject<Item> ITEM_ONE = ITEMS.register("item_one",
+    public static final RegistryObject<Item> MEDICAL_METAL = ITEMS.register("medical_metal",
             () -> new Item(new Item.Properties().group(ModTab.MODDED_ITEMS)));
 
-    public static final RegistryObject<Item> COMPLEX_ITEM_ONE = ITEMS.register("complex_item_one",
-            () -> new complex_item_one_class(new Item.Properties().group(ModTab.MODDED_ITEMS)));
+
     public static final RegistryObject<Item> COLLECTOR = ITEMS.register("collector",
             () -> new mod_collector_class(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<Item> FILLED_COLLECTOR = ITEMS.register("filled_collector",
             () -> new mod_collector_filled_class(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> VACCINE_100 = ITEMS.register("vaccine_100",
+            () -> new Vaccine_100(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> HANDRUB = ITEMS.register("handrub",
+            () -> new HandRub(new Item.Properties().group(ModTab.MODDED_ITEMS)));
+
     public static final RegistryObject<Item> BATON = ITEMS.register("baton",
             () -> new mod_weapon_class(ModItemTier.ITEM_ONE, 0,5f,new Item.Properties().group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> MASK = ITEMS.register("mask",
+            () -> new MaskFull(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> MASK_HALF = ITEMS.register("mask_half",
+            () -> new MaskHalf(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> MASK_NONE = ITEMS.register("mask_none",
+            () -> new MaskNone(new Item.Properties().setNoRepair().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+
 
     public static final RegistryObject<ModSpawnEggItem> POLICE_SPAWN_EGG = ITEMS.register("police_spawn_egg",
-            () -> new ModSpawnEggItem(EntityTypesInit.POLICE, 0x464F56, 0x1D6336,
+            () -> new ModSpawnEggItem(EntityTypesInit.POLICE, 0x000000, 0x630000,
                     new Item.Properties().group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<ModSpawnEggItem> NEUTRAL_CITIZEN_SPAWN_EGG = ITEMS.register("neutral_citizen_spawn_egg",
-            () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN, 0x464F56, 0x1D6336,
+            () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN, 0xFFFFBF, 0x63ADBC,
                     new Item.Properties().group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<ModSpawnEggItem> NEUTRAL_CITIZEN_J_SPAWN_EGG = ITEMS.register("neutral_citizen_j_spawn_egg",
-            () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN_J, 0x464F56, 0x1D6336,
+            () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN_J, 0xFFFFBF, 0x63AD32,
                     new Item.Properties().group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<ModSpawnEggItem> NEUTRAL_CITIZEN_N_SPAWN_EGG = ITEMS.register("neutral_citizen_n_spawn_egg",
-            () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN_N, 0x464F56, 0x1D6336,
+            () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN_N, 0xFFFFBF, 0xCF7232,
                     new Item.Properties().group(ModTab.MODDED_ITEMS)));
 
 

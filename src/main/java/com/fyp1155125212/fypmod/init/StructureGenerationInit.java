@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.init;
 
+import com.fyp1155125212.fypmod.world.biome.ModBiomes;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -18,6 +19,7 @@ public class StructureGenerationInit {
         Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(key);
 
         if(types.contains(BiomeDictionary.Type.PLAINS)) {
+        //if(types.contains(ModBiomes.POLLUTED_BIOME)) {
             List<Supplier<StructureFeature<?, ?>>> structures = event.getGeneration().getStructures();
 
             structures.add(() -> StructuresInit.HOUSE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
