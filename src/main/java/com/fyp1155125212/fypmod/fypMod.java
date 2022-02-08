@@ -1,6 +1,6 @@
 package com.fyp1155125212.fypmod;
 
-import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen;
+import com.fyp1155125212.fypmod.entity.custom.*;
 import com.fyp1155125212.fypmod.entity.renderer.*;
 import com.fyp1155125212.fypmod.init.*;
 import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
@@ -75,9 +75,11 @@ public class fypMod
         DeferredWorkQueue.runLater(
                 () -> {
                     GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizen.setAttributes().create());
-                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen.setAttributes().create());
-                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen.setAttributes().create());
-                    GlobalEntityTypeAttributes.put(EntityTypesInit.POLICE.get(), NeutralCitizen.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen_J.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen_N.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.POLICE.get(), Police.setAttributes().create());
+                    GlobalEntityTypeAttributes.put(EntityTypesInit.DOCTOR.get(), Doctor.setAttributes().create());
+
                 }
         );
         event.enqueueWork( () -> {
@@ -93,6 +95,7 @@ public class fypMod
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN.get(), NeutralCitizenRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen_JRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen_NRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.DOCTOR.get(), DoctorRenderer::new);
 
     }
 

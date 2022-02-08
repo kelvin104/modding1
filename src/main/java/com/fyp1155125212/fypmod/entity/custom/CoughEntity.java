@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class CoughEntity extends ProjectileEntity implements IAngerable {
-    private Entity targetInContact = null;
+
     private static final DataParameter<Integer> ANGER_TIME = EntityDataManager.createKey(CoughEntity.class, DataSerializers.VARINT);
     private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.convertRange(20, 39);
     private UUID field_234231_bH_;

@@ -25,6 +25,9 @@ public class EntityTypesInit {
     public static final RegistryObject<EntityType<NeutralCitizen_N>> NEUTRAL_CITIZEN_N = ENTITY_TYPES.register("neutral_citizen_n",
             () -> EntityType.Builder.create(NeutralCitizen_N::new, EntityClassification.MONSTER).size(1.0f,1.0f).build(new ResourceLocation(fypMod.MOD_ID,"neutral_citizen_n").toString()));
 
+    public static final RegistryObject<EntityType<Doctor>> DOCTOR = ENTITY_TYPES.register("doctor",
+            () -> EntityType.Builder.create(Doctor::new, EntityClassification.MONSTER).size(1.0f,1.0f).build(new ResourceLocation(fypMod.MOD_ID,"doctor").toString()));
+
     public static final RegistryObject<EntityType<CoughEntity>> COUGH = ENTITY_TYPES.register("cough",
             () -> EntityType.Builder.<CoughEntity>create(CoughEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).trackingRange(4).updateInterval(10).build(new ResourceLocation(fypMod.MOD_ID,"cough").toString()));
 
