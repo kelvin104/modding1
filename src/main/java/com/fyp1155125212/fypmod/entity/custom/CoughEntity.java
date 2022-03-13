@@ -143,9 +143,10 @@ public class CoughEntity extends ProjectileEntity implements IAngerable {
     }
 
     public static void applySicknessEffect(Entity entity, double multiplier){
-        if(Math.random() < multiplier){
+        ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 5000));
+        if(Math.random() < multiplier){ // close to 1 = more likely to get infected
             ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
-            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 99999));
+
         }
     }
 
@@ -156,18 +157,21 @@ public class CoughEntity extends ProjectileEntity implements IAngerable {
 
         if(targetedEntity instanceof PlayerEntity){
             if((((PlayerEntity)targetedEntity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK.get())){
-                maskVariable = 0.9;
+                maskVariable = 0.2;
             }
             else if((((PlayerEntity)targetedEntity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_HALF.get())){
                 maskVariable = 0.6;
             }
             else if((((PlayerEntity)targetedEntity).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem()== ItemInit.MASK_NONE.get())){
-                maskVariable = 0.1;
+                maskVariable = 0.9;
             }
         }
 
-        if((((LivingEntity)targetedEntity).isPotionActive(EffectInit.VACCINATED.get()))){
-            vaccinatedVariable = 0; //to be modified
+        if((((LivingEntity)targetedEntity).isPotionActive(EffectInit.VACCINATED_B.get()))){
+            vaccinatedVariable = 0.5; //to be modified
+        }
+        if((((LivingEntity)targetedEntity).isPotionActive(EffectInit.VACCINATED_S.get()))){
+            vaccinatedVariable = 0.7; //to be modified
         }
 
         if((attackingEntity != null)&&(((LivingEntity)attackingEntity).isPotionActive(EffectInit.VIRUS_CARRIER.get()))){

@@ -4,11 +4,13 @@ import com.fyp1155125212.fypmod.entity.custom.*;
 import com.fyp1155125212.fypmod.entity.renderer.*;
 import com.fyp1155125212.fypmod.init.*;
 import com.fyp1155125212.fypmod.item.custom.complex_item_one_class;
+import com.fyp1155125212.fypmod.screen.VaccineMakerScreen;
 import com.fyp1155125212.fypmod.world.biome.ModBiomes;
 import com.fyp1155125212.fypmod.world.gen.ModBiomeGeneration;
 import com.fyp1155125212.fypmod.world.gen.structure.structures.HouseStructure;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.player.PlayerEntity;
@@ -55,6 +57,8 @@ public class fypMod
         EffectInit.EFFECTS.register(eventBus);
         EffectInit.POTIONS.register(eventBus);
         EntityTypesInit.ENTITY_TYPES.register(eventBus);
+        TileEntitiesInit.register(eventBus);
+        ContainersInit.register(eventBus);
         StructuresInit.register(eventBus);
         ModBiomes.register(eventBus);
         eventBus.addListener(this::setup);
@@ -96,7 +100,8 @@ public class fypMod
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_J.get(), NeutralCitizen_JRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.NEUTRAL_CITIZEN_N.get(), NeutralCitizen_NRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.DOCTOR.get(), DoctorRenderer::new);
-
+        ScreenManager.registerFactory(ContainersInit.VACCINE_MAKER_CONTAINER.get(),
+                VaccineMakerScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

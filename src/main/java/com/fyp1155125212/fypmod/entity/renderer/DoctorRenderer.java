@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 
 
 public class DoctorRenderer extends MobRenderer<Doctor, DoctorModel<Doctor>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/modvillager/modvillager_n.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(fypMod.MOD_ID,"textures/entity/modvillager/doctor.png");
 
     public DoctorRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new DoctorModel<>(0.0F, 0.0F, 64, 64), 0.5F);

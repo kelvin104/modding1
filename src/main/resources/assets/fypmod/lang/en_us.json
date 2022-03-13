@@ -1,21 +1,34 @@
 {
-  "item.fypmod.medical_metal" : "Medical Metal",
+
   "block.fypmod.medical_metal_ore": "Medical Metal Ore",
   "block.fypmod.contaminated_dirt": "Contaminated Dirt",
+  "block.fypmod.vaccine_maker": "Vaccine Maker",
+
+  "screen.fypmod.vaccine_maker": "Vaccine Maker",
+
+  "item.fypmod.medical_metal" : "Medical Metal",
   "item.fypmod.complex_item_one" : "Complex Item 1",
 
   "item.fypmod.mask" : "Mask",
   "item.fypmod.mask_half" : "Mask (half)",
   "item.fypmod.mask_none" : "Mask (none)",
+
   "item.fypmod.baton" : "Baton",
+
   "item.fypmod.vaccine_100" : "Vaccine (100%)",
+  "item.fypmod.biontech" : "Vaccine (BioNTech)",
+  "item.fypmod.sinovac" : "Vaccine (SinoVac)",
   "item.fypmod.handrub" : "Hand Rub",
+
   "item.fypmod.collector" : "Collector",
   "item.fypmod.filled_collector" : "Filled collector",
 
   "effect.fypmod.sickness" : "Sickness",
   "effect.fypmod.severe_sickness" : "Severe Sickness",
   "effect.fypmod.vaccinated" : "Vaccinated",
+  "effect.fypmod.vaccinated_b" : "Vaccinated (BioNTech)",
+  "effect.fypmod.vaccinated_s" : "Vaccinated (SinoVac)",
+
   "effect.fypmod.cleaned" : "Cleaned",
   "effect.fypmod.virus_carrier" : "Virus Carrier",
 
@@ -42,6 +55,7 @@
   "entity.fypmod.neutral_citizen_j":"Neutral Citizen (Mask To Jaw)",
   "entity.fypmod.doctor":"Doctor",
   "item.fypmod.police_spawn_egg": "Police Spawn Egg",
+  "item.fypmod.doctor_spawn_egg": "Doctor Spawn Egg",
   "item.fypmod.neutral_citizen_spawn_egg": "Neutral Citizen Spawn Egg",
   "item.fypmod.neutral_citizen_n_spawn_egg": "Neutral Citizen (No Mask) Spawn Egg",
   "item.fypmod.neutral_citizen_j_spawn_egg": "Neutral Citizen (Mask To Jaw) Spawn Egg",

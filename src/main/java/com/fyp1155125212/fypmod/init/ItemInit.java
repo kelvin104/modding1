@@ -27,6 +27,10 @@ public class ItemInit {
             () -> new mod_collector_filled_class(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<Item> VACCINE_100 = ITEMS.register("vaccine_100",
             () -> new Vaccine_100(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> BIONTECH = ITEMS.register("biontech",
+            () -> new BioNTech(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<Item> SINOVAC = ITEMS.register("sinovac",
+            () -> new SinoVac(new Item.Properties().maxStackSize(1).group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<Item> HANDRUB = ITEMS.register("handrub",
             () -> new HandRub(new Item.Properties().group(ModTab.MODDED_ITEMS)));
 
@@ -51,6 +55,9 @@ public class ItemInit {
                     new Item.Properties().group(ModTab.MODDED_ITEMS)));
     public static final RegistryObject<ModSpawnEggItem> NEUTRAL_CITIZEN_N_SPAWN_EGG = ITEMS.register("neutral_citizen_n_spawn_egg",
             () -> new ModSpawnEggItem(EntityTypesInit.NEUTRAL_CITIZEN_N, 0xFFFFBF, 0xCF7232,
+                    new Item.Properties().group(ModTab.MODDED_ITEMS)));
+    public static final RegistryObject<ModSpawnEggItem> DOCTOR_SPAWN_EGG = ITEMS.register("doctor_spawn_egg",
+            () -> new ModSpawnEggItem(EntityTypesInit.DOCTOR, 0xFFFFFF, 0x000000,
                     new Item.Properties().group(ModTab.MODDED_ITEMS)));
 
 

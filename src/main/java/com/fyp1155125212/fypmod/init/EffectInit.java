@@ -20,11 +20,17 @@ public class EffectInit {
 
     public static final RegistryObject<Effect> VACCINATED = EFFECTS.register("vaccinated", VaccinatedEffect::new);
 
+    public static final RegistryObject<Effect> VACCINATED_B = EFFECTS.register("vaccinated_b", VaccinatedEffect_B::new);
+
+    public static final RegistryObject<Effect> VACCINATED_S = EFFECTS.register("vaccinated_s", VaccinatedEffect_S::new);
+
+
     public static final RegistryObject<Effect> CLEANED = EFFECTS.register("cleaned", Cleaned::new);
 
     public static final RegistryObject<Effect> VIRUS_CARRIER = EFFECTS.register("virus_carrier", VirusCarrierEffect::new);
 
     public static final RegistryObject<Effect> SEVERE_SICKNESS = EFFECTS.register("severe_sickness", SevereSicknessEffect::new);
+
 
 
     /*

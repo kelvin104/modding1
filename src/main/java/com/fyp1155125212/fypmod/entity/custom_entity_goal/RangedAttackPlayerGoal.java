@@ -1,5 +1,6 @@
 package com.fyp1155125212.fypmod.entity.custom_entity_goal;
 
+import com.fyp1155125212.fypmod.entity.custom.Doctor;
 import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen;
 import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen_J;
 import com.fyp1155125212.fypmod.entity.custom.NeutralCitizen_N;
@@ -51,11 +52,13 @@ public class RangedAttackPlayerGoal extends Goal {
      */
     public boolean shouldExecute() {
         LivingEntity livingentity = this.entityHost.getAttackTarget();
-        if (livingentity != null && livingentity.isAlive()
+        if (
+                livingentity != null && livingentity.isAlive()
                 &&(!(livingentity instanceof NeutralCitizen))
                 &&(!(livingentity instanceof NeutralCitizen_J))
                 &&(!(livingentity instanceof NeutralCitizen_N))
-                &&( (livingentity instanceof PlayerEntity)||(livingentity instanceof AbstractVillagerEntity))) {
+                &&( (livingentity instanceof PlayerEntity)||((livingentity instanceof AbstractVillagerEntity)&&(!(livingentity instanceof Doctor))))
+        ) {
             this.attackTarget = livingentity;
             return true;
         } else {

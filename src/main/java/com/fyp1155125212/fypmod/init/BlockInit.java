@@ -2,6 +2,7 @@ package com.fyp1155125212.fypmod.init;
 
 import com.fyp1155125212.fypmod.ModTab;
 import com.fyp1155125212.fypmod.block.custom.ContaminatedDirt;
+import com.fyp1155125212.fypmod.block.custom.VaccineMakerBlock;
 import com.fyp1155125212.fypmod.fypMod;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -29,6 +30,9 @@ public class BlockInit {
     public static final RegistryObject<Block> CONTAMINATED_DIRT = registerBlock("contaminated_dirt",
             () -> new ContaminatedDirt(AbstractBlock.Properties.create(Material.EARTH).sound(SoundType.GROUND)
                     .harvestTool(ToolType.SHOVEL).hardnessAndResistance(0.5f)));
+
+    public static final RegistryObject<Block> VACCINE_MAKER = registerBlock("vaccine_maker",
+            () -> new VaccineMakerBlock(AbstractBlock.Properties.create(Material.IRON)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

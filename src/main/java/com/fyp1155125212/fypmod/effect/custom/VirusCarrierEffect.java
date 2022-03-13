@@ -18,9 +18,11 @@ public class VirusCarrierEffect extends Effect {
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
         super.performEffect(entityLivingBaseIn, amplifier);
-        if(Math.random() < 0.1){
+        if(Math.random() < 0.1){ //replace this with poisson distribution
             CoughEntity.applySicknessEffect(entityLivingBaseIn, CoughEntity.multiplierForSicknessEffect(null, entityLivingBaseIn));
         }
 
     }
+
+
 }

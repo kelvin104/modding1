@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "I I",
+    "III"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "I": {
+      "item": "fypmod:medical_metal"
+    }
+  },
+  "result": {
+    "item": "fypmod:vaccine_maker"
+  }
+}
