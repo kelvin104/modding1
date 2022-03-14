@@ -126,7 +126,7 @@ public class CoughEntity extends ProjectileEntity implements IAngerable {
         if (entity instanceof LivingEntity && targeted_entity instanceof PlayerEntity) {
             targeted_entity.attackEntityFrom(DamageSource.causeIndirectDamage(this, (LivingEntity)entity).setProjectile(), 0F);
             //playSound(SoundEvents.ENTITY_GHAST_SCREAM,0.2F,0.2F);
-            applySicknessEffect(targeted_entity, multiplierForSicknessEffect(entity, targeted_entity));
+          //  applySicknessEffect(targeted_entity, multiplierForSicknessEffect(entity, targeted_entity));
         }
 
         //if(!world.isRemote){this.remove();}
@@ -143,10 +143,10 @@ public class CoughEntity extends ProjectileEntity implements IAngerable {
     }
 
     public static void applySicknessEffect(Entity entity, double multiplier){
-        ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 5000));
+
         if(Math.random() < multiplier){ // close to 1 = more likely to get infected
             ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.SICKNESS.get(), 99999));
-
+            ((LivingEntity)entity).addPotionEffect(new EffectInstance(EffectInit.VIRUS_CARRIER.get(), 99999));
         }
     }
 
